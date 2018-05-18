@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import sys
 import pickle
 import xlrd
@@ -13,12 +14,13 @@ import cairosvg
     Should be adapted if used in another occasion
     Structure used:
         - Excel file containing the doctors' data
-        - SVG templates for the pdf files to produce
+        - Folder templates containing the SVG templates
     Output:
         - Pickle file containing the doctors' data
-        - Folder output:
-            -Folder postal_labels
-            -Folder prescription_books
+        - Directory mail-labels 
+            - Subdirectory memos 
+            - Subdirectory notebooks
+        - Directory notebooks
 """
 
 g_relevant_c = [3]
@@ -82,52 +84,63 @@ def extractor(file):
         else:
             mail_labels_hm[inami_key] = [(row_values[0], row_values[1], row_values[2])]
 
-    with open("doctors", mode='wb+') as f:
+    with open("doctors_hm", mode='wb+') as f:
         pickle.dump(doctors_hm, f)
-    with open("mail_labels", mode='wb+') as f:
+    with open("mail_labels_hm", mode='wb+') as f:
         pickle.dump(mail_labels_hm, f)
 
     return doctors_hm, mail_labels_hm
 
 
-def mail_label_maker(doctor, num, type):
+def mail_label_maker(doctor, num, command_type):
     """
         Create a pdf mail label for the corresponding command number
         :param doctor: Dictionary containing the doctor's data
         :param num: Command number
-        :param type: Command type (memo or prescription)
+        :param command_type: Command type (memo or prescription)
         :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
     doc['g_order_number'] = num
-    doc['g_target_name'] = type
-    #TODO Produce L_BARCODE 128 optimized
-    with open("mail_labels.svg", mode='r') as f:
+    doc['g_target_name'] = command_type
+
+    # TODO Produce L_BARCODE 128 optimized
+    with open("templates/mail_labels.svg", mode='r') as f:
         template = Template(f.read())
         filled_template = template.substitute(doc)
-    print("test")
     with open(str(num) + ".svg", mode='w+') as f:
         f.write(filled_template)
-    print("there")
 
-    cairosvg.svg2pdf(url=str(num) + '.svg', write_to=str(num) + '.pdf')
-    #TODO Produce PDF (different repository function of type)
+    if command_type == 'algemene':
+        path = 'mail_labels/notebooks/'
+    else:
+        path = 'mail_labels/memos/'
+    cairosvg.svg2pdf(url=str(num) + '.svg', write_to=path + str(num) + '.pdf')
+
+    os.remove(str(num) + '.svg')
 
 
-def lang_prescription(doctor, file, num):
+def lang_prescription(doctor, file, num, lang):
     """
         Create a pdf prescription notebooks for the corresponding doctor by language
         :param doctor: Dictionary containing the doctor's data
         :param file: Template corresponding to the language
         :param num: Number of notebooks needed
+        :param lang: Language of the notebooks created
         :return: -
     """
-    #TODO Produce H_BARCODE (strip last 0) interleaved 2 of 5
+    # TODO Produce H_BARCODE (strip last 0) interleaved 2 of 5
+
     with open(file, mode='r') as f:
         template = Template(f.read())
-        filled = template.substitute(doctor)
+        filled_template = template.substitute(doctor)
+    with open(str(num) + ".svg", mode='w+') as f:
+        f.write(filled_template)
 
-    #TODO Produce PDF n times
+    for i in range(num):
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + str(num) + '.' + str(i) + '.pdf')
+
+    os.remove(str(num) + '.svg')
 
 
 def prescription_maker(doctor, num_by_lang):
@@ -139,9 +152,9 @@ def prescription_maker(doctor, num_by_lang):
     """
     doc = dict(list(doctor['g'].items()) + list(doctor['h'].items()) + list(doctor['s'].items()))
     if num_by_lang[0] > 0:
-        lang_prescription(doc, "NL_prescriptions.svg", num_by_lang[0])
+        lang_prescription(doc, "templates/NL_prescriptions.svg", num_by_lang[0], 'NL')
     if num_by_lang[1] > 0:
-        lang_prescription(doc, "FR_prescriptions.svg", num_by_lang[1])
+        lang_prescription(doc, "templates/FR_prescriptions.svg", num_by_lang[1], 'FR')
 
 
 def pdf_maker(doctors_hm, mails_hm):
