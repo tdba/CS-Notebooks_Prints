@@ -275,12 +275,15 @@
 <text transform="matrix(1 0 0 1 63.3765 532.053)" class="st16 st2">$s_fax</text>
 <text transform="matrix(1 0 0 1 60.4575 540.4534)" class="st16 st2">$s_email</text>
 <g>
+	<!--
 	<defs>
 		<rect id="SVGID_5_" x="16.5" y="121" width="121.8" height="45.7"/>
 	</defs>
 	<clipPath id="SVGID_6_">
 		<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
-	</clipPath>
+	</clipPath>-->
+	$image_bar_code
+	<!--
 	<path class="st17" d="M27,152.8v-32.2 M25.2,152.8v-32.2"/>
 	<line class="st18" x1="29.7" y1="152.8" x2="29.7" y2="120.6"/>
 	<path class="st17" d="M37.7,152.8v-32.2 M34.2,152.8v-32.2 M32.4,152.8v-32.2"/>
@@ -299,7 +302,7 @@
 	<line class="st18" x1="113.8" y1="152.8" x2="113.8" y2="120.6"/>
 	<line class="st17" x1="118.3" y1="152.8" x2="118.3" y2="120.6"/>
 	<path class="st18" d="M126.3,152.8v-32.2 M121,152.8v-32.2"/>
-	<line class="st17" x1="129" y1="152.8" x2="129" y2="120.6"/>
+	<line class="st17" x1="129" y1="152.8" x2="129" y2="120.6"/>-->
 	<g class="st19">
 		<text transform="matrix(1 0 0 1 41.8784 164.7176)" class="st20 st21">$h_inami_number</text>
 	</g>

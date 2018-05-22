@@ -7,6 +7,7 @@ import xlrd
 
 from string import Template
 import cairosvg
+import BarCodeGenerator as BCG
 
 """
     Script made for the Cardboard Scents company
@@ -105,6 +106,7 @@ def mail_label_maker(doctor, num, command_type):
     doc['g_target_name'] = command_type
 
     # TODO Produce L_BARCODE 128 optimized
+
     with open("templates/mail_labels.svg", mode='r') as f:
         template = Template(f.read())
         filled_template = template.substitute(doc)
@@ -130,6 +132,7 @@ def lang_prescription(doctor, file, num, lang):
         :return: -
     """
     # TODO Produce H_BARCODE (strip last 0) interleaved 2 of 5
+    doctor['image_bar_code'] = BCG.render('0' + str(doctor['h_bar_code'])[:-1])
 
     with open(file, mode='r') as f:
         template = Template(f.read())
@@ -137,10 +140,10 @@ def lang_prescription(doctor, file, num, lang):
     with open(str(num) + ".svg", mode='w+') as f:
         f.write(filled_template)
 
-    for i in range(num):
+    """for i in range(num):
         cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + str(num) + '.' + str(i) + '.pdf')
 
-    os.remove(str(num) + '.svg')
+    os.remove(str(num) + '.svg')"""
 
 
 def prescription_maker(doctor, num_by_lang):
@@ -168,8 +171,8 @@ def pdf_maker(doctors_hm, mails_hm):
         num_notebook = (sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] == 'N']),
                         sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] != 'N']))
         doctor = doctors_hm[inami]
-        for command in mails_hm[inami]:
-            mail_label_maker(doctor, command[0], command[1])
+        """for command in mails_hm[inami]:
+            mail_label_maker(doctor, command[0], command[1])"""
         prescription_maker(doctor, num_notebook)
 
 

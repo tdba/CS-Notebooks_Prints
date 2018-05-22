@@ -589,6 +589,9 @@ ovqVdI//AE5//9k=" transform="matrix(0.24 0 0 0.2398 36 36.0004)">
 	<clipPath id="SVGID_14_">
 		<use xlink:href="#SVGID_13_"  style="overflow:visible;"/>
 	</clipPath>
+	<!--
+    Barcode part
+	-->
 	<line class="st2" x1="153.2" y1="154.7" x2="153.2" y2="82.7"/>
 	<path class="st3" d="M163.7,154.7v-72 M158.7,154.7v-72 M155.7,154.7v-72"/>
 	<line class="st4" x1="167.7" y1="154.7" x2="167.7" y2="82.7"/>
