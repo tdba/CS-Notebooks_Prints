@@ -5,23 +5,23 @@ import sys
 import pickle
 import xlrd
 
-from string import Template
 import cairosvg
-import BarCodeGenerator as BCG
+from string import Template
+from BarCodeGenerator import render
 
 """
-    Script made for the Cardboard Scents company
-    This extractor convert information from doctors to produce prescription books and postal labels
-    Should be adapted if used in another occasion
-    Structure used:
-        - Excel file containing the doctors' data
-        - Folder templates containing the SVG templates
-    Output:
-        - Pickle file containing the doctors' data
-        - Directory mail-labels 
-            - Subdirectory memos 
-            - Subdirectory notebooks
-        - Directory notebooks
+Script made for the Cardboard Scents company
+This extractor convert information from doctors to produce prescription books and postal labels
+Should be adapted if used in another occasion
+Structure used:
+    - Excel file containing the doctors' data
+    - Folder templates containing the SVG templates
+Output:
+    - Pickle file containing the doctors' data
+    - Directory mail-labels 
+        - Subdirectory memos 
+        - Subdirectory notebooks
+    - Directory notebooks
 """
 
 g_relevant_c = [3]
@@ -35,9 +35,9 @@ mail_c = [0, 1, 9, 10, 11, 12, 13, 14, 15]
 
 def relevant_columns_names(num):
     """
-        Switch implementation matching the column number and the column name
-        :param num: The column number
-        :return: The column name (used in the storage dictionaries)
+    Switch implementation matching the column number and the column name
+    :param num: The column number
+    :return: The column name (used in the storage dictionaries)
     """
     return {
         0: 'g_order_number', 1: 'g_target_name', 2: 'g_language', 3: 'g_inami_number', 5: 'h_first_name',
@@ -50,9 +50,9 @@ def relevant_columns_names(num):
 
 def extractor(file):
     """
-        Extract data from provided file to store it in dictionary with doctors as key
-        :param file: Excel file containing the doctors' data
-        :return: A dictionary with the doctors' data (also exported with pickle)
+    Extract data from provided file to store it in dictionary with doctors as key
+    :param file: Excel file containing the doctors' data
+    :return: A dictionary with the doctors' data (also exported with pickle)
     """
     doctors_hm = {}
     mail_labels_hm = {}
@@ -95,11 +95,11 @@ def extractor(file):
 
 def mail_label_maker(doctor, num, command_type):
     """
-        Create a pdf mail label for the corresponding command number
-        :param doctor: Dictionary containing the doctor's data
-        :param num: Command number
-        :param command_type: Command type (memo or prescription)
-        :return: -
+    Create a pdf mail label for the corresponding command number
+    :param doctor: Dictionary containing the doctor's data
+    :param num: Command number
+    :param command_type: Command type (memo or prescription)
+    :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
     doc['g_order_number'] = num
@@ -124,15 +124,15 @@ def mail_label_maker(doctor, num, command_type):
 
 def lang_prescription(doctor, file, num, lang):
     """
-        Create a pdf prescription notebooks for the corresponding doctor by language
-        :param doctor: Dictionary containing the doctor's data
-        :param file: Template corresponding to the language
-        :param num: Number of notebooks needed
-        :param lang: Language of the notebooks created
-        :return: -
+    Create a pdf prescription notebooks for the corresponding doctor by language
+    :param doctor: Dictionary containing the doctor's data
+    :param file: Template corresponding to the language
+    :param num: Number of notebooks needed
+    :param lang: Language of the notebooks created
+    :return: -
     """
     # TODO Produce H_BARCODE (strip last 0) interleaved 2 of 5
-    doctor['image_bar_code'] = BCG.render('0' + str(doctor['h_bar_code'])[:-1])
+    doctor['image_bar_code'] = render('0' + str(doctor['h_bar_code'])[:-1])
 
     with open(file, mode='r') as f:
         template = Template(f.read())
@@ -148,10 +148,10 @@ def lang_prescription(doctor, file, num, lang):
 
 def prescription_maker(doctor, num_by_lang):
     """
-        Create a pdf prescription notebooks for the corresponding doctor
-        :param doctor: Dictionary containing the doctor's data
-        :param num_by_lang: Number of notebooks needed by language
-        :return: -
+    Create a pdf prescription notebooks for the corresponding doctor
+    :param doctor: Dictionary containing the doctor's data
+    :param num_by_lang: Number of notebooks needed by language
+    :return: -
     """
     doc = dict(list(doctor['g'].items()) + list(doctor['h'].items()) + list(doctor['s'].items()))
     if num_by_lang[0] > 0:
@@ -162,10 +162,10 @@ def prescription_maker(doctor, num_by_lang):
 
 def pdf_maker(doctors_hm, mails_hm):
     """
-        Launch the creations of the needed pdf files (mail labels and prescription notebooks)
-        :param doctors_hm: Dictionary containing doctors'data under the form of dictionaries by doctor
-        :param mails_hm: Dictionary containing the commands number as a list by doctor
-        :return: -
+    Launch the creations of the needed pdf files (mail labels and prescription notebooks)
+    :param doctors_hm: Dictionary containing doctors'data under the form of dictionaries by doctor
+    :param mails_hm: Dictionary containing the commands number as a list by doctor
+    :return: -
     """
     for inami in mails_hm.keys():
         num_notebook = (sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] == 'N']),
