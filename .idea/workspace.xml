@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db738350-b4c8-484a-a886-466113d1454d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/dtanguy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/dtanguy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarCodeGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/BarCodeGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS-Notebooks_Prints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CS-Notebooks_Prints.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PdfMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/PdfMaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182499.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels/notebooks/19000182499.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels_hm" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels_hm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/NL2.0.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/NL2.1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FR_prescriptions.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FR_prescriptions.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/NL_prescriptions.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/NL_prescriptions.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mail_labels.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mail_labels.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PdfMaker.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PdfMaker.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PdfMaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-455">
-              <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="40" selection-end-column="7" />
+            <state relative-caret-position="844">
+              <caret line="147" column="20" selection-start-line="147" selection-start-column="20" selection-end-line="147" selection-end-column="20" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -33,7 +43,7 @@
       <file leaf-file-name="BarCodeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
+            <state relative-caret-position="522">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
@@ -44,7 +54,7 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file leaf-file-name="NL_prescriptions.svg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NL_prescriptions.svg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
           <provider selected="true" editor-type-id="images" />
         </entry>
@@ -66,6 +76,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>3</find>
+      <find>st2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,12 +85,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/mail_labels.svg" />
+        <option value="$PROJECT_DIR$/BarCodeGenerator.py" />
+        <option value="$PROJECT_DIR$/2.svg" />
         <option value="$PROJECT_DIR$/templates/FR_prescriptions.svg" />
         <option value="$PROJECT_DIR$/templates/NL_prescriptions.svg" />
-        <option value="$PROJECT_DIR$/2.svg" />
+        <option value="$PROJECT_DIR$/templates/mail_labels.svg" />
         <option value="$PROJECT_DIR$/PdfMaker.py" />
-        <option value="$PROJECT_DIR$/BarCodeGenerator.py" />
       </list>
     </option>
   </component>
@@ -98,8 +109,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,10 +136,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/PdfMaker.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -156,7 +167,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Tang\AppData\Local\Programs\Python\Python36\python.exe" />
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -190,69 +201,69 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13949275" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5005208" side_tool="true" weight="0.32912722" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32801822" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32912722" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0804904" />
-      <window_info id="Learn" order="5" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32915717" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32912722" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info id="Learn" order="5" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32912722" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32912722" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07864583" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32912722" />
-      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32912722" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Learn" order="5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,6 +302,32 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PdfMaker.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FR_prescriptions.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PdfMaker.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1819">
           <caret line="107" selection-start-line="107" selection-end-line="107" />
           <folding>
@@ -318,34 +355,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FR_prescriptions.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/2.svg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PdfMaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-455">
-          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="40" selection-end-column="7" />
+        <state relative-caret-position="844">
+          <caret line="147" column="20" selection-start-line="147" selection-start-column="20" selection-end-line="147" selection-end-column="20" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 841.9 595.3" style="enable-background:new 0 0 841.9 595.3;" xml:space="preserve">
 <style type="text/css">
@@ -10,8 +9,8 @@
 	.st4{clip-path:url(#SVGID_14_);fill:none;stroke:#000000;stroke-width:2.85;stroke-miterlimit:10;}
 	.st5{clip-path:url(#SVGID_14_);}
 	.st6{font-family:'MinionPro-Regular';}
-	.st7{font-size:10px;}
-	.st8{font-size:12px;}
+	.st7{font-size:7.5px;}
+	.st8{font-size:10.5px;}
 	.st9{font-family:'MinionPro-BoldCn';}
 	.st10{clip-path:url(#SVGID_16_);fill:none;stroke:#000000;stroke-width:1.85;stroke-miterlimit:10;}
 	.st11{clip-path:url(#SVGID_16_);fill:none;stroke:#000000;stroke-width:0.85;stroke-miterlimit:10;}
@@ -25,6 +24,7 @@
 	.st19{clip-path:url(#SVGID_20_);fill:none;stroke:#000000;stroke-width:0.85;stroke-miterlimit:10;}
 	.st20{clip-path:url(#SVGID_20_);fill:none;stroke:#000000;stroke-width:2.85;stroke-miterlimit:10;}
 	.st21{clip-path:url(#SVGID_20_);}
+	.st22{font-weight:bold;}
 </style>
 <g>
 	<defs>
@@ -583,35 +583,17 @@ ovqVdI//AE5//9k=" transform="matrix(0.24 0 0 0.2398 36 36.0004)">
 	</g>
 </g>
 <g>
-	<defs>
-		<rect id="SVGID_13_" x="112.8" y="113.4" width="246" height="53.3"/>
-	</defs>
-	<clipPath id="SVGID_14_">
-		<use xlink:href="#SVGID_13_"  style="overflow:visible;"/>
-	</clipPath>
-	<!--
-    Barcode part
-	-->
-	<line class="st2" x1="153.2" y1="154.7" x2="153.2" y2="82.7"/>
-	<path class="st3" d="M163.7,154.7v-72 M158.7,154.7v-72 M155.7,154.7v-72"/>
-	<line class="st4" x1="167.7" y1="154.7" x2="167.7" y2="82.7"/>
-	<path class="st2" d="M175.2,154.7v-72 M172.2,154.7v-72"/>
-	<line class="st4" x1="179.7" y1="154.7" x2="179.7" y2="82.7"/>
-	<line class="st3" x1="183.7" y1="154.7" x2="183.7" y2="82.7"/>
-	<line class="st2" x1="186.2" y1="154.7" x2="186.2" y2="82.7"/>
-	<line class="st4" x1="191.7" y1="154.7" x2="191.7" y2="82.7"/>
-	<line class="st3" x1="194.7" y1="154.7" x2="194.7" y2="82.7"/>
-	<line class="st2" x1="197.2" y1="154.7" x2="197.2" y2="82.7"/>
+	$image_bar_code
 </g>
 <text transform="matrix(1 0 0 1 80.5039 195.4708)"><tspan x="0" y="0" class="st6 st8">$l_title $l_last_name $l_first_name</tspan></text>
 <text transform="matrix(1 0 0 1 80.5039 209.8707)"><tspan x="0" y="0" class="st6 st8">$l_institute</tspan></text>
 <text transform="matrix(1 0 0 1 80.5039 224.2706)"><tspan x="0" y="0" class="st6 st8">$l_street</tspan></text>
 <text transform="matrix(1 0 0 1 80.5039 238.6705)"><tspan x="0" y="0" class="st6 st8">$l_zip $l_city</tspan></text>
-<text transform="matrix(1 0 0 1 246.0474 65.9474)"><tspan x="0" y="0" class="st9 st7">R</tspan><tspan x="6" y="0" class="st9 st7">OU</tspan><tspan x="19" y="0" class="st9 st7">L</tspan><tspan x="24.3" y="0" class="st9 st7">A</tspan><tspan x="30.7" y="0" class="st9 st7">R</tspan><tspan x="36.5" y="0" class="st9 st7">T</tspan><tspan x="41.5" y="0" class="st9 st7">A c/o </tspan><tspan x="63.5" y="0" class="st9 st7">A</tspan><tspan x="69.7" y="0" class="st9 st7">CT</tspan><tspan x="81.1" y="0" class="st9 st7">U</tspan><tspan x="86.9" y="0" class="st9 st7">A ME</tspan><tspan x="108.5" y="0" class="st9 st7">D</tspan><tspan x="115.1" y="0" class="st9 st7">I</tspan><tspan x="118.4" y="0" class="st9 st7">CA</tspan></text>
-<text transform="matrix(1 0 0 1 246.0474 77.9474)"><tspan x="0" y="0" class="st9 st7">R</tspan><tspan x="5.9" y="0" class="st9 st7">ue de la </tspan><tspan x="37.3" y="0" class="st9 st7">F</tspan><tspan x="42.2" y="0" class="st9 st7">u</tspan><tspan x="47.3" y="0" class="st9 st7">s</tspan><tspan x="51" y="0" class="st9 st7">é</tspan><tspan x="55.3" y="0" class="st9 st7">e 50 </tspan><tspan x="72.7" y="0" class="st9 st7">R</tspan><tspan x="78.9" y="0" class="st9 st7">a</tspan><tspan x="83.3" y="0" class="st9 st7">k</tspan><tspan x="88.1" y="0" class="st9 st7">e</tspan><tspan x="92.2" y="0" class="st9 st7">t</tspan><tspan x="95.4" y="0" class="st9 st7">s</tspan><tspan x="99" y="0" class="st9 st7">t</tspan><tspan x="102.1" y="0" class="st9 st7">r</tspan><tspan x="105.9" y="0" class="st9 st7">a</tspan><tspan x="110.3" y="0" class="st9 st7">a</tspan><tspan x="114.6" y="0" class="st9 st7">t</tspan></text>
-<text transform="matrix(1 0 0 1 246.0474 89.9474)"><tspan x="0" y="0" class="st9 st7">B</tspan><tspan x="5.7" y="0" class="st9 st7">r</tspan><tspan x="9.6" y="0" class="st9 st7">u</tspan><tspan x="14.7" y="0" class="st9 st7">x</tspan><tspan x="19.1" y="0" class="st9 st7">e</tspan><tspan x="23.3" y="0" class="st9 st7">l</tspan><tspan x="26" y="0" class="st9 st7">l</tspan><tspan x="28.6" y="0" class="st9 st7">e</tspan><tspan x="32.8" y="0" class="st9 st7">s 1130 </tspan><tspan x="59" y="0" class="st9 st7">B</tspan><tspan x="64.7" y="0" class="st9 st7">r</tspan><tspan x="68.6" y="0" class="st9 st7">u</tspan><tspan x="73.7" y="0" class="st9 st7">s</tspan><tspan x="77.3" y="0" class="st9 st7">s</tspan><tspan x="81" y="0" class="st9 st7">el</tspan></text>
-<text transform="matrix(1 0 0 1 246.0474 101.9474)"><tspan x="0" y="0" class="st9 st7">B</tspan><tspan x="5.9" y="0" class="st9 st7">E</tspan><tspan x="11.2" y="0" class="st9 st7">L</tspan><tspan x="16.1" y="0" class="st9 st7">GI</tspan><tspan x="25.9" y="0" class="st9 st7">U</tspan><tspan x="32.4" y="0" class="st9 st7">M</tspan></text>
-<text transform="matrix(1 0 0 1 57.1182 262.8136)"><tspan x="0" y="0" class="st9 st7">$g_target_name</tspan></text>
-<text transform="matrix(1 0 0 1 273.708 264.2677)"><tspan x="0" y="0" class="st9 st8">$g_order_number</tspan></text>
+<text transform="matrix(1 0 0 1 246.0474 65.9474)"><tspan x="0" y="0" class="st9 st7 st22">ROULARTA c/o ACTUA MEDICA</tspan></text>
+<text transform="matrix(1 0 0 1 246.0474 77.9474)"><tspan x="0" y="0" class="st9 st7 st22">Rue de la Fusée 50 Raketstraat</tspan></text>
+<text transform="matrix(1 0 0 1 246.0474 89.9474)"><tspan x="0" y="0" class="st9 st7 st22">Bruxelles 1130 Brussel</tspan></text>
+<text transform="matrix(1 0 0 1 246.0474 101.9474)"><tspan x="0" y="0" class="st9 st7 st22">BELGIUM</tspan></text>
+<text transform="matrix(1 0 0 1 57.1182 262.2677)"><tspan x="0" y="0" class="st9 st8 st22">$g_target_name</tspan></text>
+<text transform="matrix(1 0 0 1 279.708 262.7677)"><tspan x="0" y="0" class="st9 st8 st22">$g_order_number</tspan></text>
 <text transform="matrix(1 0 0 1 150 164.027)"><tspan x="0" y="0" class="st6 st8">$l_bar_code</tspan></text>
 </svg>

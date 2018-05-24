@@ -2,7 +2,9 @@
   <dictionary name="dtanguy">
     <words>
       <w>algemene</w>
+      <w>cairosvg</w>
       <w>inami</w>
+      <w>itof</w>
     </words>
   </dictionary>
 </component>

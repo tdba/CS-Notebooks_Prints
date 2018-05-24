@@ -104,22 +104,27 @@ def mail_label_maker(doctor, num, command_type):
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
     doc['g_order_number'] = num
     doc['g_target_name'] = command_type
+    code = doc['l_barcode']
 
-    # TODO Produce L_BARCODE 128 optimized
+    if len(code == 24):
+        # TODO Produce L_BARCODE 128 optimized
 
-    with open("templates/mail_labels.svg", mode='r') as f:
-        template = Template(f.read())
-        filled_template = template.substitute(doc)
-    with open(str(num) + ".svg", mode='w+') as f:
-        f.write(filled_template)
+        with open("templates/mail_labels.svg", mode='r') as f:
+            template = Template(f.read())
+            filled_template = template.substitute(doc)
+        with open(str(num) + ".svg", mode='w+') as f:
+            f.write(filled_template)
 
-    if command_type == 'algemene':
-        path = 'mail_labels/notebooks/'
+        if command_type == 'algemene':
+            path = 'mail_labels/notebooks/'
+        else:
+            path = 'mail_labels/memos/'
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to=path + str(num) + '.pdf')
+
+        os.remove(str(num) + '.svg')
     else:
-        path = 'mail_labels/memos/'
-    cairosvg.svg2pdf(url=str(num) + '.svg', write_to=path + str(num) + '.pdf')
-
-    os.remove(str(num) + '.svg')
+        print("An error occurred, we can't provide this mail label because the given code doesn't fit the requirements"
+              "\nDenied order number:" + num + '\n With code' + code + '\n\n')
 
 
 def lang_prescription(doctor, file, num, lang):
@@ -131,8 +136,7 @@ def lang_prescription(doctor, file, num, lang):
     :param lang: Language of the notebooks created
     :return: -
     """
-    # TODO Produce H_BARCODE (strip last 0) interleaved 2 of 5
-    doctor['image_bar_code'] = render('0' + str(doctor['h_bar_code'])[:-1])
+    doctor['image_bar_code'] = render('0' + str(doctor['h_bar_code'])[:-1], 'itof')
 
     with open(file, mode='r') as f:
         template = Template(f.read())
@@ -140,10 +144,11 @@ def lang_prescription(doctor, file, num, lang):
     with open(str(num) + ".svg", mode='w+') as f:
         f.write(filled_template)
 
-    """for i in range(num):
-        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + str(num) + '.' + str(i) + '.pdf')
+    for i in range(num):
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + str(doctor['h_inami_number']) + '.'
+                                                         + str(i) + '.pdf')
 
-    os.remove(str(num) + '.svg')"""
+    os.remove(str(num) + '.svg')
 
 
 def prescription_maker(doctor, num_by_lang):
@@ -154,6 +159,9 @@ def prescription_maker(doctor, num_by_lang):
     :return: -
     """
     doc = dict(list(doctor['g'].items()) + list(doctor['h'].items()) + list(doctor['s'].items()))
+    doc['h_last_name'] = doc['h_last_name'].upper()
+    doc['h_first_name'] = doc['h_first_name'].upper()
+
     if num_by_lang[0] > 0:
         lang_prescription(doc, "templates/NL_prescriptions.svg", num_by_lang[0], 'NL')
     if num_by_lang[1] > 0:
