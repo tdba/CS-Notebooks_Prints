@@ -1,27 +1,22 @@
 # -*- coding: utf-8 -*-
 
 
-def render(digits, code_format):
+def render(digits):
     """
     This function converts its input: a string of decimal digits into a barcode
     using the interleaved 2 of 5 or 128 format
     The input string must not contain an odd number of digits. The output is an SVG string.
     :param digits: Number to translate
-    :param code_format: Barcode format (itof or 128)
     :return: SVG string Representing a barcode
     """
-    if code_format == 128:
-        top = '<svg height="250" width="{0}" style="background:white">'
-        bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
-    else:
-        top = '<svg height="250" width="{0}" style="background:white">'
-        bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
+    top = '<svg height="250" width="{0}" style="background:white">'
+    bar = '<rect x="{0}" y="154.6" width="{1}" height="70.2" style="fill:black"/>'
 
     barcode = [top.format(len(digits) * 14 + 24)]
 
-    def byte(num):
+    def ietf(num):
         """
-        Switch implementation matching a number to its byte representation (length of rectangles for barcode)
+        Switch implementation matching a number to its byte representation (length of rectangles for ietf barcode)
         :param num: The index of digits to convert
         :return: Its rectangles length for barcode representation
         """
@@ -40,7 +35,7 @@ def render(digits, code_format):
         if i == len(digits):
             return bits
 
-        for b, w in zip(byte(i), byte(i+1)):
+        for b, w in zip(ietf(i), ietf(i+1)):
             bits.extend([b, w])
 
         return encode(bits, i+2)
@@ -62,4 +57,5 @@ def render(digits, code_format):
 
         return svg(bits, i+2, x+b+w)
 
-    return '\n'.join(svg(encode([2, 2, 2, 2]) + [4, 2, 2, 0]))
+    return '\n'.join(svg(encode([2, 2, 2, 2], ietf) + [4, 2, 2, 0]))
+

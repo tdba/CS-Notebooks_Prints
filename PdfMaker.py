@@ -7,6 +7,7 @@ import xlrd
 
 import cairosvg
 from string import Template
+import barcode
 from BarCodeGenerator import render
 
 """
@@ -107,7 +108,11 @@ def mail_label_maker(doctor, num, command_type):
     code = doc['l_barcode']
 
     if len(code == 24):
+        barcode.generate('code128', doc['l_bar_code'], output='barcode')
         # TODO Produce L_BARCODE 128 optimized
+        with open("barcode.svg", mode='r') as f:
+            doc['image_bar_code'] = ''.join(l + '\n' for l in f.readlines[4:])
+        os.remove('barcode.svg')
 
         with open("templates/mail_labels.svg", mode='r') as f:
             template = Template(f.read())
@@ -136,7 +141,7 @@ def lang_prescription(doctor, file, num, lang):
     :param lang: Language of the notebooks created
     :return: -
     """
-    doctor['image_bar_code'] = render('0' + str(doctor['h_bar_code'])[:-1], 'itof')
+    doctor['image_bar_code'] = render('0' + str(doctor['h_bar_code'])[:-1])
 
     with open(file, mode='r') as f:
         template = Template(f.read())
