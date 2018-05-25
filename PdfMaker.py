@@ -7,7 +7,7 @@ import xlrd
 
 import cairosvg
 from string import Template
-import barcode
+from barcode import generate
 from BarCodeGenerator import render
 
 """
@@ -105,13 +105,14 @@ def mail_label_maker(doctor, num, command_type):
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
     doc['g_order_number'] = num
     doc['g_target_name'] = command_type
-    code = doc['l_barcode']
+    code = doc['l_bar_code']
 
-    if len(code == 24):
-        barcode.generate('code128', doc['l_bar_code'], output='barcode')
-        # TODO Produce L_BARCODE 128 optimized
+    if len(code) == 24:
+        generate('code128', doc['l_bar_code'], output='barcode')
         with open("barcode.svg", mode='r') as f:
-            doc['image_bar_code'] = ''.join(l + '\n' for l in f.readlines[4:])
+            svg_barcode = ''.join(f.readlines()[5:])
+            top = '<svg x="157px" y="117px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'
+            doc['image_bar_code'] = top + svg_barcode
         os.remove('barcode.svg')
 
         with open("templates/mail_labels.svg", mode='r') as f:
@@ -184,8 +185,8 @@ def pdf_maker(doctors_hm, mails_hm):
         num_notebook = (sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] == 'N']),
                         sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] != 'N']))
         doctor = doctors_hm[inami]
-        """for command in mails_hm[inami]:
-            mail_label_maker(doctor, command[0], command[1])"""
+        for command in mails_hm[inami]:
+            mail_label_maker(doctor, command[0], command[1])
         prescription_maker(doctor, num_notebook)
 
 

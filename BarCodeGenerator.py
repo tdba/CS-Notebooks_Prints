@@ -10,8 +10,7 @@ def render(digits):
     :return: SVG string Representing a barcode
     """
     top = '<svg height="250" width="{0}" style="background:white">'
-    bar = '<rect x="{0}" y="154.6" width="{1}" height="70.2" style="fill:black"/>'
-
+    bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
     barcode = [top.format(len(digits) * 14 + 24)]
 
     def ietf(num):
@@ -57,5 +56,4 @@ def render(digits):
 
         return svg(bits, i+2, x+b+w)
 
-    return '\n'.join(svg(encode([2, 2, 2, 2], ietf) + [4, 2, 2, 0]))
-
+    return '\n'.join(svg(encode([2, 2, 2, 2]) + [4, 2, 2, 0]))
