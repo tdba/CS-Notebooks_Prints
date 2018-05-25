@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db738350-b4c8-484a-a886-466113d1454d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Matcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarCodeGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/BarCodeGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS-Notebooks_Prints.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CS-Notebooks_Prints.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PdfMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/PdfMaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182499.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels_hm" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels_hm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +21,8 @@
       <file leaf-file-name="PdfMaker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PdfMaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
-              <caret line="110" column="64" selection-start-line="110" selection-start-column="64" selection-end-line="110" selection-end-column="64" />
+            <state relative-caret-position="3312">
+              <caret line="184" column="28" lean-forward="true" selection-start-line="184" selection-start-column="28" selection-end-line="184" selection-end-column="28" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -30,11 +30,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarCodeGenerator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Matcher.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Matcher.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
+              <folding>
+                <element signature="e#25#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BarCodeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -68,6 +80,7 @@
         <option value="$PROJECT_DIR$/BarCodeGenerator.py" />
         <option value="$PROJECT_DIR$/19000182499.svg" />
         <option value="$PROJECT_DIR$/PdfMaker.py" />
+        <option value="$PROJECT_DIR$/Matcher.py" />
       </list>
     </option>
   </component>
@@ -96,6 +109,12 @@
               <item name="CS-Notebooks_Prints" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS-Notebooks_Prints" type="462c0819:PsiDirectoryNode" />
               <item name="mail_labels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS-Notebooks_Prints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS-Notebooks_Prints" type="462c0819:PsiDirectoryNode" />
+              <item name="mail_labels" type="462c0819:PsiDirectoryNode" />
+              <item name="memos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS-Notebooks_Prints" type="b2602c69:ProjectViewProjectNode" />
@@ -169,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527021915726</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Barcode 128 addition">
+      <created>1527240482679</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1527240482679</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -187,8 +213,8 @@
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16545893" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50158226" side_tool="true" weight="0.33259913" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841774" visible="true" weight="0.3382688" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5024155" side_tool="true" weight="0.3382688" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49758455" visible="true" weight="0.3382688" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32819384" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -196,11 +222,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3286638" />
@@ -208,29 +234,29 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Learn" order="5" />
-      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
+      <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Maven Projects" order="6" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32801822" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13949275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32801822" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3286638" />
       <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32915717" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Learn" order="5" />
@@ -241,10 +267,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32915717" />
+      <window_info id="Favorites" order="6" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,16 +304,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bar code addition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bar code addition" />
+    <MESSAGE value="Barcode 128 addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Barcode 128 addition" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PdfMaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="40" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
@@ -484,26 +504,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/19000182499.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PdfMaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="110" column="64" selection-start-line="110" selection-start-column="64" selection-end-line="110" selection-end-column="64" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/19000182499.svg" />
     <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PdfMaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3312">
+          <caret line="184" column="28" lean-forward="true" selection-start-line="184" selection-start-column="28" selection-end-line="184" selection-end-column="28" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Matcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
