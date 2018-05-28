@@ -102,7 +102,7 @@ def mail_label_maker(doctor, num, command_type, labels):
     :param labels: Mail labels dictionary
     :return: -
     """
-    doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
+    doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()) + list(doctor['h'].items()))
     doc['g_order_number'] = num
     doc['g_target_name'] = command_type
     inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
@@ -145,7 +145,7 @@ def lang_prescription(doctor, file, num, lang):
     :param lang: Language of the notebooks created
     :return: -
     """
-    doctor['image_bar_code'] = render(str(doctor['h_bar_code']))
+    doctor['image_bar_code'] = render(str(doctor['h_bar_code'])[:-1])
 
     with open(file, mode='r') as f:
         template = Template(f.read())

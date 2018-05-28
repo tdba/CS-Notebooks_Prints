@@ -13,6 +13,23 @@ def render(digits):
     bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
     barcode = [top.format(len(digits) * 14 + 24)]
 
+    def checksum():
+        """
+        Perform the UPC checksum of the digits encoded and add it to the code
+        :return: -
+        """
+        acc = 0
+        for i in range(len(digits)):
+            if i % 2 == 0:
+                acc += 3 * int(digits[i])
+            else:
+                acc += int(digits[i])
+        m = acc % 10
+        if m != 0:
+            return str(10-m)
+        else:
+            return str(m)
+
     def itof(num):
         """
         Switch implementation matching a number to its byte representation (length of rectangles for itof barcode)
@@ -56,4 +73,5 @@ def render(digits):
 
         return svg(bits, i+2, x+b+w)
 
+    digits += checksum()    # If to remove: go remove '[:-1]' to the code to generate
     return '\n'.join(svg(encode([1.2, 1.2, 1.2, 1.2]) + [2.4, 1.2, 1.2, 0]))
