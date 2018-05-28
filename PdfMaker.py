@@ -79,7 +79,7 @@ def extractor(file):
             s_values[relevant_columns_names(i)] = row_values[i]
 
         inami_key = int(h_values['h_inami_number'].replace('.', ''))
-        name = (h_values['h_first_name'] + ' ' + h_values['h_last_name']).lower()
+        name = (h_values['h_last_name'] + ' ' + h_values['h_first_name']).lower()
 
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
