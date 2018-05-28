@@ -585,10 +585,11 @@ ovqVdI//AE5//9k=" transform="matrix(0.24 0 0 0.2398 36 36.0004)">
 <g>
 	$image_bar_code
 </g>
-<text transform="matrix(1 0 0 1 80.5039 195.4708)"><tspan x="0" y="0" class="st6 st8">$l_title $l_last_name $l_first_name</tspan></text>
-<text transform="matrix(1 0 0 1 80.5039 209.8707)"><tspan x="0" y="0" class="st6 st8">$l_institute</tspan></text>
-<text transform="matrix(1 0 0 1 80.5039 224.2706)"><tspan x="0" y="0" class="st6 st8">$l_street</tspan></text>
-<text transform="matrix(1 0 0 1 80.5039 238.6705)"><tspan x="0" y="0" class="st6 st8">$l_zip $l_city</tspan></text>
+<text transform="matrix(1 0 0 1 80.5039 185.0709)"><tspan x="0" y="0" class="st6 st8">$l_title $l_last_name $l_first_name</tspan></text>
+<text transform="matrix(1 0 0 1 80.5039 199.4708)"><tspan x="0" y="0" class="st6 st8">$h_last_name $h_first_name</tspan></text>
+<text transform="matrix(1 0 0 1 80.5039 213.8707)"><tspan x="0" y="0" class="st6 st8">$l_institute</tspan></text>
+<text transform="matrix(1 0 0 1 80.5039 228.2706)"><tspan x="0" y="0" class="st6 st8">$l_street</tspan></text>
+<text transform="matrix(1 0 0 1 80.5039 242.6705)"><tspan x="0" y="0" class="st6 st8">$l_zip $l_city</tspan></text>
 <text transform="matrix(1 0 0 1 246.0474 65.9474)"><tspan x="0" y="0" class="st9 st7 st22">ROULARTA c/o ACTUA MEDICA</tspan></text>
 <text transform="matrix(1 0 0 1 246.0474 77.9474)"><tspan x="0" y="0" class="st9 st7 st22">Rue de la Fusée 50 Raketstraat</tspan></text>
 <text transform="matrix(1 0 0 1 246.0474 89.9474)"><tspan x="0" y="0" class="st9 st7 st22">Bruxelles 1130 Brussel</tspan></text>

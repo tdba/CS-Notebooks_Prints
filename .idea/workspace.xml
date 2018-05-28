@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db738350-b4c8-484a-a886-466113d1454d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Matcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/dtanguy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/dtanguy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182499.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail_labels_hm" beforeDir="false" afterPath="$PROJECT_DIR$/mail_labels_hm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarCodeGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/BarCodeGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PdfMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/PdfMaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail_labels/notebooks/19000182500.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FR_prescriptions.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FR_prescriptions.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/NL_prescriptions.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/NL_prescriptions.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mail_labels.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mail_labels.svg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +23,8 @@
       <file leaf-file-name="PdfMaker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PdfMaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3312">
-              <caret line="184" column="28" lean-forward="true" selection-start-line="184" selection-start-column="28" selection-end-line="184" selection-end-column="28" />
+            <state relative-caret-position="162">
+              <caret line="143" column="42" lean-forward="true" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -30,23 +32,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Matcher.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Matcher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Matcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
-              <folding>
-                <element signature="e#25#34#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="490">
+              <caret line="103" column="99" selection-start-line="83" selection-start-column="4" selection-end-line="103" selection-end-column="99" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mail_labels.svg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="BarCodeGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="88">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -74,20 +78,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/2.svg" />
-        <option value="$PROJECT_DIR$/templates/FR_prescriptions.svg" />
-        <option value="$PROJECT_DIR$/templates/NL_prescriptions.svg" />
-        <option value="$PROJECT_DIR$/templates/mail_labels.svg" />
-        <option value="$PROJECT_DIR$/BarCodeGenerator.py" />
         <option value="$PROJECT_DIR$/19000182499.svg" />
-        <option value="$PROJECT_DIR$/PdfMaker.py" />
         <option value="$PROJECT_DIR$/Matcher.py" />
+        <option value="$PROJECT_DIR$/BarCodeGenerator.py" />
+        <option value="$PROJECT_DIR$/PdfMaker.py" />
+        <option value="$PROJECT_DIR$/templates/NL_prescriptions.svg" />
+        <option value="$PROJECT_DIR$/templates/FR_prescriptions.svg" />
+        <option value="$PROJECT_DIR$/templates/mail_labels.svg" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="960" />
     <option name="y" value="27" />
-    <option name="width" value="1680" />
-    <option name="height" value="1023" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -98,6 +103,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,11 +128,20 @@
               <item name="mail_labels" type="462c0819:PsiDirectoryNode" />
               <item name="notebooks" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CS-Notebooks_Prints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS-Notebooks_Prints" type="462c0819:PsiDirectoryNode" />
+              <item name="notebooks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS-Notebooks_Prints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS-Notebooks_Prints" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -150,7 +165,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.PDFMaker">
+    <configuration name="Matcher" type="PythonConfigurationType" factoryName="Python">
+      <module name="CS-Notebooks_Prints" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Matcher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="PDFMaker" type="PythonConfigurationType" factoryName="Python">
       <module name="CS-Notebooks_Prints" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,6 +202,10 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <list>
+      <item itemvalue="Python.PDFMaker" />
+      <item itemvalue="Python.Matcher" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -195,7 +232,21 @@
       <option name="project" value="LOCAL" />
       <updated>1527240482679</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Matcher - files loading">
+      <created>1527248272081</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1527248272081</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Matcher - inami look up&#10;PdfMaker - l_bar_code by doctor edited to match one l_bar_code by mail label">
+      <created>1527502407252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1527502407252</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -211,64 +262,64 @@
     <frame x="0" y="27" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16545893" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1865942" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5024155" side_tool="true" weight="0.3382688" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49758455" visible="true" weight="0.3382688" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49758455" visible="true" weight="0.33712983" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32915717" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32819384" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49841774" weight="0.33259913" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49841774" weight="0.33257404" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3286638" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Learn" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info anchor="right" id="Maven Projects" order="6" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32819384" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13949275" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3344017" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32801822" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49758455" visible="true" weight="0.33810574" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3286638" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32915717" />
+      <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="Learn" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5005208" side_tool="true" weight="0.32912722" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49841774" weight="0.33259913" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5024155" side_tool="true" weight="0.3382688" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.32912722" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info id="Favorites" order="6" side_tool="true" />
     </layout-to-restore>
@@ -305,7 +356,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bar code addition" />
     <MESSAGE value="Barcode 128 addition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Barcode 128 addition" />
+    <MESSAGE value="Matcher - files loading" />
+    <MESSAGE value="Matcher - inami look up&#10;PdfMaker - l_bar_code by doctor edited to match one l_bar_code by mail label" />
+    <option name="LAST_COMMIT_MESSAGE" value="Matcher - inami look up&#10;PdfMaker - l_bar_code by doctor edited to match one l_bar_code by mail label" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
@@ -488,14 +541,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2.svg" />
-    <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/CS-Notebooks_Prints.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FR_prescriptions.svg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file:///usr/local/lib/python3.6/site-packages/barcode/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -505,35 +552,38 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/19000182499.svg" />
-    <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/BarCodeGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="88">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PdfMaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3312">
-          <caret line="184" column="28" lean-forward="true" selection-start-line="184" selection-start-column="28" selection-end-line="184" selection-end-column="28" />
+        <state relative-caret-position="162">
+          <caret line="143" column="42" lean-forward="true" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/NL_prescriptions.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FR_prescriptions.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Matcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
-          <folding>
-            <element signature="e#25#34#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="490">
+          <caret line="103" column="99" selection-start-line="83" selection-start-column="4" selection-end-line="103" selection-end-column="99" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/mail_labels.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -13,16 +13,16 @@ def render(digits):
     bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
     barcode = [top.format(len(digits) * 14 + 24)]
 
-    def ietf(num):
+    def itof(num):
         """
-        Switch implementation matching a number to its byte representation (length of rectangles for ietf barcode)
+        Switch implementation matching a number to its byte representation (length of rectangles for itof barcode)
         :param num: The index of digits to convert
         :return: Its rectangles length for barcode representation
         """
-        return {'0': (1.4, 1.4, 2.8, 2.8, 1.4), '1': (2.8, 1.4, 1.4, 1.4, 2.8), '2': (1.4, 2.8, 1.4, 1.4, 2.8),
-                '3': (2.8, 2.8, 1.4, 1.4, 1.4), '4': (1.4, 1.4, 2.8, 1.4, 2.8), '5': (2.8, 1.4, 2.8, 1.4, 1.4),
-                '6': (1.4, 2.8, 2.8, 1.4, 1.4), '7': (1.4, 1.4, 1.4, 2.8, 2.8), '8': (2.8, 1.4, 1.4, 2.8, 1.4),
-                '9': (1.4, 2.8, 1.4, 2.8, 1.4)}[digits[num]]
+        return {'0': (1.2, 1.2, 2.4, 2.4, 1.2), '1': (2.4, 1.2, 1.2, 1.2, 2.4), '2': (1.2, 2.4, 1.2, 1.2, 2.4),
+                '3': (2.4, 2.4, 1.2, 1.2, 1.2), '4': (1.2, 1.2, 2.4, 1.2, 2.4), '5': (2.4, 1.2, 2.4, 1.2, 1.2),
+                '6': (1.2, 2.4, 2.4, 1.2, 1.2), '7': (1.2, 1.2, 1.2, 2.4, 2.4), '8': (2.4, 1.2, 1.2, 2.4, 1.2),
+                '9': (1.2, 2.4, 1.2, 2.4, 1.2)}[digits[num]]
 
     def encode(bits, i=0):
         """
@@ -34,12 +34,12 @@ def render(digits):
         if i == len(digits):
             return bits
 
-        for b, w in zip(ietf(i), ietf(i+1)):
+        for b, w in zip(itof(i), itof(i+1)):
             bits.extend([b, w])
 
         return encode(bits, i+2)
 
-    def svg(bits, i=0, x=10):
+    def svg(bits, i=0, x=22):
         """
         Converts the list of ints returned by `encode` to a list of SVG
         elements that can be joined to form an SVG string
@@ -56,4 +56,4 @@ def render(digits):
 
         return svg(bits, i+2, x+b+w)
 
-    return '\n'.join(svg(encode([2, 2, 2, 2]) + [4, 2, 2, 0]))
+    return '\n'.join(svg(encode([1.2, 1.2, 1.2, 1.2]) + [2.4, 1.2, 1.2, 0]))
