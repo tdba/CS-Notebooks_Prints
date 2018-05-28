@@ -78,13 +78,12 @@ def extractor(file):
             s_values[relevant_columns_names(i)] = row_values[i]
 
         inami_key = int(h_values['h_inami_number'].replace('.', ''))
-
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
         if inami_key in mail_labels_hm:
-            mail_labels_hm[inami_key].append((row_values[0], row_values[1], row_values[2]))
+            mail_labels_hm[inami_key][row_values[0]] = (row_values[1], row_values[2], row_values[16])
         else:
-            mail_labels_hm[inami_key] = [(row_values[0], row_values[1], row_values[2])]
+            mail_labels_hm[inami_key] = {row_values[0]: (row_values[1], row_values[2], row_values[16])}
 
     with open("doctors_hm", mode='wb+') as f:
         pickle.dump(doctors_hm, f)
@@ -94,21 +93,24 @@ def extractor(file):
     return doctors_hm, mail_labels_hm
 
 
-def mail_label_maker(doctor, num, command_type):
+def mail_label_maker(doctor, num, command_type, labels):
     """
     Create a pdf mail label for the corresponding command number
     :param doctor: Dictionary containing the doctor's data
     :param num: Command number
     :param command_type: Command type (memo or prescription)
+    :param labels: Mail labels dictionary
     :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()))
     doc['g_order_number'] = num
     doc['g_target_name'] = command_type
-    code = doc['l_bar_code']
+    inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
+    code = labels[inami_number][num][2]
+    doc['l_bar_code'] = code
 
     if len(code) == 24:
-        generate('code128', doc['l_bar_code'], output='barcode')
+        generate('code128', code, output='barcode')
         with open("barcode.svg", mode='r') as f:
             svg_barcode = ''.join(f.readlines()[5:])
             top = '<svg x="157px" y="117px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'
@@ -126,6 +128,7 @@ def mail_label_maker(doctor, num, command_type):
         else:
             path = 'mail_labels/memos/'
         cairosvg.svg2pdf(url=str(num) + '.svg', write_to=path + str(num) + '.pdf')
+        labels[inami_number][num] += (path + str(num) + '.pdf',)
 
         os.remove(str(num) + '.svg')
     else:
@@ -150,8 +153,9 @@ def lang_prescription(doctor, file, num, lang):
     with open(str(num) + ".svg", mode='w+') as f:
         f.write(filled_template)
 
+    inami_number = int(doctor['h_inami_number'].replace('.', ''))
     for i in range(num):
-        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + str(doctor['h_inami_number']) + '.'
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + '.' + str(inami_number) + '.'
                                                          + str(i) + '.pdf')
 
     os.remove(str(num) + '.svg')
@@ -182,12 +186,12 @@ def pdf_maker(doctors_hm, mails_hm):
     :return: -
     """
     for inami in mails_hm.keys():
-        num_notebook = (sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] == 'N']),
-                        sum([1 for command in mails_hm[inami] if command[1] == 'algemene' and command[2] != 'N']))
+        quantity = (sum([1 for command in mails_hm[inami].values() if command[0] == 'algemene' and command[1] == 'N']),
+                    sum([1 for command in mails_hm[inami].values() if command[0] == 'algemene' and command[1] != 'N']))
         doctor = doctors_hm[inami]
-        for command in mails_hm[inami]:
-            mail_label_maker(doctor, command[0], command[1])
-        prescription_maker(doctor, num_notebook)
+        for k, e in mails_hm[inami].items():
+            mail_label_maker(doctor, k, e[0], mails_hm)
+        prescription_maker(doctor, quantity)
 
 
 if __name__ == '__main__':
@@ -196,4 +200,6 @@ if __name__ == '__main__':
     print("Extraction achieved")
     print("Pdf creation")
     pdf_maker(doctors, mail_labels)
+    with open("mail_labels_hm", mode='wb+') as hm:
+        pickle.dump(mail_labels, hm)
     print("Creations achieved")
