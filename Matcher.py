@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import pickle
+import popen2
 
 """
 Script made for the Cardboard Scents company
@@ -52,6 +53,9 @@ def print_labels(pos_labels, labels, number):
         order_number = pos_labels[0][4]
         while True:
             # TODO print
+            popen2.popen4("lpr -P [printer] " + file)
+
+            print("---Printing---")
             print("Did it print well? (y/n)")
             print_input = input().lower()
             if print_input == 'y':
