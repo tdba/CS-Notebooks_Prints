@@ -27,8 +27,7 @@ def render(digits):
         m = acc % 10
         if m != 0:
             return str(10-m)
-        else:
-            return str(m)
+        return '0'
 
     def itof(num):
         """
