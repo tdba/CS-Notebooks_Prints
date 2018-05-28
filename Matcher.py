@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-import re
-import sys
 import pickle
-import popen2
+# import popen2
 
 """
 Script made for the Cardboard Scents company
@@ -22,12 +20,12 @@ Structure used:
 def loader():
     """
     Load the pickle file containing the dictionaries useful to the match
-    :return: Mail labels dictionary
+    :return: Mail labels dictionaries
     """
-    with open('mail_labels_hm', mode='rb') as f_labels, open('doctors_hm', mode='rb') as f_docs:
-        labels = pickle.load(f_labels)
-        docs = pickle.load(f_docs)
-    return labels, docs
+    with open('mail_i_hm', 'rb') as f_labels, open('inami_match_hm', 'rb') as f_i_match:
+        i_labels = pickle.load(f_labels)
+        i_match = pickle.load(f_i_match)
+    return i_labels, i_match
 
 
 def save(labels_ht):
@@ -36,11 +34,11 @@ def save(labels_ht):
     :param labels_ht: Updated mail labels dictionary with less entries
     :return: -
     """
-    with open("mail_labels_hm", mode='wb+') as f:
+    with open("mail_i_hm", mode='wb+') as f:
         pickle.dump(labels_ht, f)
 
 
-def print_labels(pos_labels, labels, number):
+def print_label(pos_labels, labels, number):
     """
     Print a file, remove it, and remove it from the labels yet to print
     :param pos_labels: Mail labels from the dictionary fitting the requested document (memo or notebook)
@@ -53,7 +51,8 @@ def print_labels(pos_labels, labels, number):
         order_number = pos_labels[0][4]
         while True:
             # TODO print
-            popen2.popen4("lpr -P [printer] " + file)
+            # popen2.popen4("lpr -P [printer] " + file)
+            os.system(file)
 
             print("---Printing---")
             print("Did it print well? (y/n)")
@@ -67,15 +66,28 @@ def print_labels(pos_labels, labels, number):
         print("There is no more file to print for this inami number with this kind of document")
 
 
-def look_up_name(labels, docs):
+def look_up_name(i_labels, i_match):
     """
     Perform a look in the memo bloc labels to print one with a matching name
-    :param labels: Mail labels dictionary
-    :param docs: Dictionary containing the doctors' data
+    :param i_labels: Dictionary containing the commands numbers as a list by doctor with inami number as key
+    :param i_match: Dictionary containing the inami number by doctor with names as key
     :return: -
     """
-    # TODO
-    pass
+    while True:
+        print("Please enter the last name of the doctor you're looking for (or q to quit):")
+        name = input().lower()
+        if name == 'q':
+            break
+        print("Please enter the first name of the doctor you're looking for:")
+        name += ' ' + input().lower()
+
+        if name not in i_match.keys():
+            print("The entered name does not match any registered doctor memo order")
+        else:
+            number = i_match[name]
+            pos_labels = [e + (k,) for k, e in i_labels[number].items() if e[0] != 'algemene']
+            print_label(pos_labels, i_labels, number)
+            break
 
 
 def look_up_inami(labels, memo):
@@ -108,13 +120,13 @@ def look_up_inami(labels, memo):
             print("Please enter an input respecting the expected format (an inami number or q) \n")
 
 
-def match(labels, docs):
+def match(i_labels, i_match):
     """
     Interrogate the user on the inami number to match
     to open the corresponding mail label pdf file
     Unless the user asks to quit, it will propose to redo the operation (while it's possible)
-    :param labels: Dictionary containing the commands number as a list by doctor
-    :param docs: Dictionary containing the doctors' data
+    :param i_labels: Dictionary containing the commands numbers as a list by doctor with inami number as key
+    :param i_match: Dictionary containing the commands numbers as a list by doctor with names as key
     :return: -
     """
     while True:
@@ -132,23 +144,23 @@ def match(labels, docs):
                 if type_input == 'q':
                     break
                 elif type_input == 'n':
-                    look_up_name(labels, docs)
+                    look_up_name(i_labels, i_match)
                     break
                 elif type_input == 'i':
-                    look_up_inami(labels, True)
+                    look_up_inami(i_labels, True)
                     break
                 else:
                     print("The input didn't match any of the expected option, let's start again")
 
         elif cmd_input == 'n':
-            look_up_inami(labels, False)
+            look_up_inami(i_labels, False)
 
         else:
             print("Please enter an input respecting the expected format (m, n or q) \n")
 
 
 if __name__ == '__main__':
-    mail_labels, doctors = loader()
+    mail_labels_by_i, inami_match = loader()
     print("Initiating the matcher")
-    match(mail_labels)
+    match(mail_labels_by_i, inami_match)
     print("Everything ended as planned")

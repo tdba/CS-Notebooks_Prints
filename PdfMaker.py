@@ -57,6 +57,7 @@ def extractor(file):
     """
     doctors_hm = {}
     mail_labels_hm = {}
+    mail_labels_name_hm = {}
 
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
@@ -78,17 +79,21 @@ def extractor(file):
             s_values[relevant_columns_names(i)] = row_values[i]
 
         inami_key = int(h_values['h_inami_number'].replace('.', ''))
+        name = (h_values['h_first_name'] + ' ' + h_values['h_last_name']).lower()
+
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
         if inami_key in mail_labels_hm:
             mail_labels_hm[inami_key][row_values[0]] = (row_values[1], row_values[2], row_values[16])
         else:
             mail_labels_hm[inami_key] = {row_values[0]: (row_values[1], row_values[2], row_values[16])}
+            if row_values[1] != 'algemene':
+                mail_labels_name_hm[name] = inami_key
 
-    with open("doctors_hm", mode='wb+') as f:
-        pickle.dump(doctors_hm, f)
-    with open("mail_labels_hm", mode='wb+') as f:
-        pickle.dump(mail_labels_hm, f)
+    with open("docs_hm", 'wb+') as f_doc, open("mail_i_hm", 'wb+') as f_mail, open("inami_match_hm", 'wb+') as i_match:
+        pickle.dump(doctors_hm, f_doc)
+        pickle.dump(mail_labels_hm, f_mail)
+        pickle.dump(mail_labels_name_hm, i_match)
 
     return doctors_hm, mail_labels_hm
 
@@ -200,6 +205,6 @@ if __name__ == '__main__':
     print("Extraction achieved")
     print("Pdf creation")
     pdf_maker(doctors, mail_labels)
-    with open("mail_labels_hm", mode='wb+') as hm:
+    with open("mail_i_hm", mode='wb+') as hm:
         pickle.dump(mail_labels, hm)
     print("Creations achieved")
