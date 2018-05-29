@@ -72,5 +72,5 @@ def render(digits):
 
         return svg(bits, i+2, x+b+w)
 
-    digits += checksum()    # If to remove: go remove '[:-1]' to the code to generate
+    digits += checksum()
     return '\n'.join(svg(encode([1.2, 1.2, 1.2, 1.2]) + [2.4, 1.2, 1.2, 0]))
