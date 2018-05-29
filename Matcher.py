@@ -165,6 +165,13 @@ def match(i_labels, i_match):
 
 
 if __name__ == '__main__':
+    if not os.path.exists('mail_labels/notebooks/'):
+        os.makedirs('mail_labels/notebooks/')
+    if not os.path.exists('mail_labels/memos/'):
+        os.makedirs('mail_labels/memos/')
+    if not os.path.exists('notebooks/'):
+        os.makedirs('notebooks/')
+
     mail_labels_by_i, inami_match = loader()
     print("Initiating the matcher")
     match(mail_labels_by_i, inami_match)
