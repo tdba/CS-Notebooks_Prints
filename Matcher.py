@@ -2,6 +2,7 @@
 
 import os
 import pickle
+import platform
 # import popen2
 
 """
@@ -52,7 +53,10 @@ def print_label(pos_labels, labels, number):
         while True:
             # TODO print
             # popen2.popen4("lpr -P [printer] " + file)
-            os.system(file)
+            if platform.system() == 'Darwin':
+                os.system('open ' + file)
+            else:
+                os.system('xdg-open ' + file)
 
             print("---Printing---")
             print("Did it print well? (y/n)")
@@ -61,6 +65,7 @@ def print_label(pos_labels, labels, number):
                 os.remove(file)
                 del labels[number][order_number]
                 save(labels)
+                break
 
     else:
         print("There is no more file to print for this inami number with this kind of document")
