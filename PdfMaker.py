@@ -206,10 +206,17 @@ def pdf_maker(doctors_hm, mails_hm):
 
 
 if __name__ == '__main__':
+    if not os.path.exists('mail_labels/notebooks/'):
+        os.makedirs('mail_labels/notebooks/')
+    if not os.path.exists('mail_labels/memos/'):
+        os.makedirs('mail_labels/memos/')
+    if not os.path.exists('notebooks/'):
+        os.makedirs('notebooks/')
+
     print("Initiating the extractor")
     doctors, mail_labels = extractor(sys.argv[1])
     print("Extraction achieved")
-    print("Pdf creation")
+    print("---Pdf creation---")
     pdf_maker(doctors, mail_labels)
     with open("mail_i_hm", mode='wb+') as hm:
         pickle.dump(mail_labels, hm)
