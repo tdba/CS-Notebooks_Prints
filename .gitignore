@@ -2,5 +2,5 @@
 *.iml
 *.pdf
 *.xml
-notebooks/
-mail_labels/
+notebooks/*.pdf
+mail_labels/*.pdf
