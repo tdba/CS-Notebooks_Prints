@@ -3,4 +3,5 @@
 *.pdf
 *.xml
 notebooks/*.pdf
-mail_labels/*.pdf
+mail_labels/memos/*.pdf
+mail_labels/notebooks/*.pdf
