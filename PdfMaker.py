@@ -78,8 +78,11 @@ def extractor(file):
         for i in s_relevant_c:
             s_values[relevant_columns_names(i)] = row_values[i]
 
-        inami_key = int(h_values['h_inami_number'].replace('.', ''))
-        name = (h_values['h_last_name'] + ' ' + h_values['h_first_name']).lower()
+        try:
+            inami_key = int(h_values['h_inami_number'].replace('.', ''))
+        except ValueError:
+            inami_key = int(''.join([str(ord(e)) for e in h_values['h_last_name'] + h_values['h_first_name']]))
+        name = h_values['h_last_name'].lower() + ' ' + h_values['h_first_name'].lower()
 
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
@@ -110,7 +113,10 @@ def mail_label_maker(doctor, num, command_type, labels):
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()) + list(doctor['h'].items()))
     doc['g_order_number'] = num
     doc['g_target_name'] = command_type
-    inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
+    if '.' in doctor['h']['h_inami_number']:
+        inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
+    else:
+        inami_number = int(''.join([str(ord(e)) for e in doc['h_last_name'] + doc['h_first_name']]))
     code = labels[inami_number][num][2]
     doc['l_bar_code'] = code
 
