@@ -11,7 +11,7 @@ def render(digits):
     """
     top = '<svg height="250" width="{0}" style="background:white">'
     bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
-    barcode = [top.format(len(digits) * 14 + 24)]
+    barcode = [top.format(len(digits) * 18 + 24)]
 
     def checksum():
         """
@@ -35,10 +35,10 @@ def render(digits):
         :param num: The index of digits to convert
         :return: Its rectangles length for barcode representation
         """
-        return {'0': (1.2, 1.2, 2.4, 2.4, 1.2), '1': (2.4, 1.2, 1.2, 1.2, 2.4), '2': (1.2, 2.4, 1.2, 1.2, 2.4),
-                '3': (2.4, 2.4, 1.2, 1.2, 1.2), '4': (1.2, 1.2, 2.4, 1.2, 2.4), '5': (2.4, 1.2, 2.4, 1.2, 1.2),
-                '6': (1.2, 2.4, 2.4, 1.2, 1.2), '7': (1.2, 1.2, 1.2, 2.4, 2.4), '8': (2.4, 1.2, 1.2, 2.4, 1.2),
-                '9': (1.2, 2.4, 1.2, 2.4, 1.2)}[digits[num]]
+        return {'0': (1, 1, 3, 3, 1), '1': (3, 1, 1, 1, 3), '2': (1, 3, 1, 1, 3),
+                '3': (3, 3, 1, 1, 1), '4': (1, 1, 3, 1, 3), '5': (3, 1, 3, 1, 1),
+                '6': (1, 3, 3, 1, 1), '7': (1, 1, 1, 3, 3), '8': (3, 1, 1, 3, 1),
+                '9': (1, 3, 1, 3, 1)}[digits[num]]
 
     def encode(bits, i=0):
         """
@@ -55,7 +55,7 @@ def render(digits):
 
         return encode(bits, i+2)
 
-    def svg(bits, i=0, x=22):
+    def svg(bits, i=0, x=18):
         """
         Converts the list of ints returned by `encode` to a list of SVG
         elements that can be joined to form an SVG string
@@ -73,4 +73,4 @@ def render(digits):
         return svg(bits, i+2, x+b+w)
 
     digits += checksum()
-    return '\n'.join(svg(encode([1.2, 1.2, 1.2, 1.2]) + [2.4, 1.2, 1.2, 0]))
+    return '\n'.join(svg(encode([1, 1, 1, 1]) + [3, 1, 1, 0]))
