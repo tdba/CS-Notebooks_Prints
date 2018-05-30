@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 297.6 566.9" style="enable-background:new 0 0 297.6 566.9;" xml:space="preserve">
+
 <style type="text/css">
 	.st0{fill:none;stroke:#000000;stroke-width:0.75;}
 	.st1{font-family:'HelveticaNeue';}
@@ -26,6 +27,7 @@
 	.st21{font-size:8.9492px;}
 	.st22{font-weight:bold;}
 </style>
+
 <line class="st0" x1="5.8" y1="110.7" x2="290.6" y2="110.7"/>
 <line class="st0" x1="5.8" y1="173.1" x2="290.6" y2="173.1"/>
 <line class="st0" x1="6.6" y1="216.1" x2="291.3" y2="216.1"/>
@@ -34,6 +36,8 @@
 <line class="st0" x1="147.2" y1="110.6" x2="147.2" y2="173.2"/>
 <line class="st0" x1="147.2" y1="451.4" x2="147.2" y2="543.5"/>
 <line class="st0" x1="89.1" y1="216" x2="89.1" y2="451.2"/>
+<line class="st0" x1="147.3" y1="499.5" x2="291.3" y2="499.5"/>
+
 <text transform="matrix(1 0 0 1 148.7197 125.1956)"><tspan x="0" y="0" class="st1 st2">Nom et prénom du prescripteur</tspan></text>
 <text transform="matrix(1 0 0 1 5.8481 186.6907)" class="st1 st2">A REMPLIR PAR LE PRESCRIPTEUR:</text>
 <text transform="matrix(1 0 0 1 5.8481 197.6878)"><tspan x="0" y="0" class="st1 st2">Nom et prénom </tspan></text>
@@ -44,7 +48,6 @@
 <text transform="matrix(1 0 0 1 100.1001 229.4964)" class="st5 st6">R/</text>
 <text transform="matrix(1 0 0 1 30.0327 463.2269)" class="st1 st2">Cachet du prescripteur</text>
 <text transform="matrix(1 0 0 1 159.5596 463.2269)" class="st1 st2">Date et signature du prescripteur </text>
-<line class="st0" x1="147.3" y1="499.5" x2="291.3" y2="499.5"/>
 <text transform="matrix(1 0 0 1 152.8301 510.471)"><tspan x="0" y="0" class="st1 st2">Délivrable à partir de la date précisée</tspan></text>
 <text transform="matrix(1 0 0 1 195.7656 518.8714)" class="st1 st2">ou à partir du:</text>
 <text transform="matrix(1 0 0 1 149.5264 539.2689)" class="st1 st2">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</text>
@@ -59,10 +62,13 @@
 <text transform="matrix(1 0 0 1 10.3467 523.6536)" class="st16 st2">$s_phone</text>
 <text transform="matrix(1 0 0 1 10.3467 532.053)" class="st16 st2">$s_fax</text>
 <text transform="matrix(1 0 0 1 10.3467 540.4534)" class="st16 st2">$s_email</text>
+
 <g>
 	$image_bar_code
+
 	<g class="st19">
 		<text transform="matrix(1 0 0 1 41.8784 164.7176)" class="st20 st21">$h_inami_number</text>
 	</g>
 </g>
+	
 </svg>

@@ -167,7 +167,7 @@ def lang_prescription(doctor, file, num, lang):
     inami_number = int(doctor['h_inami_number'].replace('.', ''))
     for i in range(num):
         cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + '.' + str(inami_number) + '.'
-                                                         + str(i) + '.pdf')
+                                                         + str(i) + '.pdf', dpi=94)
 
     os.remove(str(num) + '.svg')
 
