@@ -18,6 +18,9 @@ Structure used:
 """
 
 
+notebooks = {"algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"}
+
+
 def loader():
     """
     Load the pickle file containing the dictionaries useful to the match
@@ -90,7 +93,7 @@ def look_up_name(i_labels, i_match):
             print("The entered name does not match any registered doctor memo order")
         else:
             number = i_match[name]
-            pos_labels = [e + (k,) for k, e in i_labels[number].items() if e[0] != 'algemene']
+            pos_labels = [e + (k,) for k, e in i_labels[number].items() if e[0] not in notebooks]
             print_label(pos_labels, i_labels, number)
             break
 
@@ -115,9 +118,9 @@ def look_up_inami(labels, memo):
                 print("The entered inami number does not match any registered doctor")
             else:
                 if memo:
-                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] != 'algemene']
+                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] not in notebooks]
                 else:
-                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] == 'algemene']
+                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] in notebooks]
                 print_label(pos_labels, labels, number)
                 break
 

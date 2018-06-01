@@ -33,6 +33,8 @@ s_relevant_c = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 doctors_c = [5, 6, 7, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 mail_c = [0, 1, 9, 10, 11, 12, 13, 14, 15]
 
+notebooks = {"algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"}
+
 
 def relevant_columns_names(num):
     """
@@ -90,7 +92,7 @@ def extractor(file):
             mail_labels_hm[inami_key][row_values[0]] = (row_values[1], row_values[2], row_values[16])
         else:
             mail_labels_hm[inami_key] = {row_values[0]: (row_values[1], row_values[2], row_values[16])}
-            if row_values[1] != 'algemene':
+            if row_values[1] not in notebooks:
                 mail_labels_name_hm[name] = inami_key
 
     with open("docs_hm", 'wb+') as f_doc, open("mail_i_hm", 'wb+') as f_mail, open("inami_match_hm", 'wb+') as i_match:
@@ -134,7 +136,7 @@ def mail_label_maker(doctor, num, command_type, labels):
         with open(str(num) + ".svg", mode='w+') as f:
             f.write(filled_template)
 
-        if command_type == 'algemene':
+        if command_type in notebooks:
             path = 'mail_labels/notebooks/'
         else:
             path = 'mail_labels/memos/'
@@ -197,8 +199,8 @@ def pdf_maker(doctors_hm, mails_hm):
     :return: -
     """
     for inami in mails_hm.keys():
-        quantity = (sum([1 for command in mails_hm[inami].values() if command[0] == 'algemene' and command[1] == 'N']),
-                    sum([1 for command in mails_hm[inami].values() if command[0] == 'algemene' and command[1] != 'N']))
+        quantity = (sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] == 'N']),
+                    sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] != 'N']))
         doctor = doctors_hm[inami]
         for k, e in mails_hm[inami].items():
             mail_label_maker(doctor, k, e[0], mails_hm)
