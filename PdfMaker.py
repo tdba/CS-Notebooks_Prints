@@ -126,7 +126,7 @@ def mail_label_maker(doctor, num, command_type, labels):
         generate('code128', code, output='barcode')
         with open("barcode.svg", mode='r') as f:
             svg_barcode = ''.join(f.readlines()[5:])
-            top = '<svg x="157px" y="117px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'
+            top = '<svg x="121px" y="81px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'
             doc['image_bar_code'] = top + svg_barcode
         os.remove('barcode.svg')
 
