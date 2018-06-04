@@ -6,3 +6,5 @@ notebooks/*.pdf
 mail_labels/memos/*.pdf
 mail_labels/notebooks/*.pdf
 *_hm
+*.txt
+*.xlsx

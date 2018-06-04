@@ -34,13 +34,15 @@ doctors_c = [5, 6, 7, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 mail_c = [0, 1, 9, 10, 11, 12, 13, 14, 15]
 
 notebooks = {"algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"}
+signet = [['s_title', 's_first_name', 's_last_name'], 's_speciality', 's_institute',
+          's_street', ['s_zip', 's_city'], 's_phone', 's_inami_number', 's_fax', 's_email']
 
 
 def relevant_columns_names(num):
     """
     Switch implementation matching the column number and the column name
-    :param num: The column number
-    :return: The column name (used in the storage dictionaries)
+    :param num: Int
+    :return: Str
     """
     return {
         0: 'g_order_number', 1: 'g_target_name', 2: 'g_language', 3: 'g_inami_number', 5: 'h_first_name',
@@ -54,8 +56,8 @@ def relevant_columns_names(num):
 def extractor(file):
     """
     Extract data from provided file to store it in dictionary with doctors as key
-    :param file: Excel file containing the doctors' data
-    :return: A dictionary with the doctors' data (also exported with pickle)
+    :param file: Str (filename)
+    :return: Dictionary (doctors)
     """
     doctors_hm = {}
     mail_labels_hm = {}
@@ -106,10 +108,10 @@ def extractor(file):
 def mail_label_maker(doctor, num, command_type, labels):
     """
     Create a pdf mail label for the corresponding command number
-    :param doctor: Dictionary containing the doctor's data
-    :param num: Command number
-    :param command_type: Command type (memo or prescription)
-    :param labels: Mail labels dictionary
+    :param doctor: Dictionary
+    :param num: Int
+    :param command_type: Str
+    :param labels: Dictionary
     :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()) + list(doctor['h'].items()))
@@ -149,16 +151,67 @@ def mail_label_maker(doctor, num, command_type, labels):
               "\nDenied order number:" + num + '\n With code' + code + '\n\n')
 
 
+def signet_maker(doctor):
+    """
+    Create from the doctor's data the svg of the signet adapted to blanks and oversized cells
+    :param doctor: Dictionary
+    :return: Str (svg code of the signet)
+    """
+    line = '<text transform ="matrix(1 0 0 1 10.3467 {})" class ="st16 {}"> {} </text>\n'
+    step = 8.4004
+    y = 473.2532
+    result = ''
+
+    def text_adapt(field, ordinate, bold=''):
+        """
+        Adapted line of the signet regarding the size of the input or its emptiness
+        :param field: Str (content for the fields)
+        :param ordinate: Int
+        :param bold: Str
+        :return: Str
+        """
+        if '&' in field:
+            field = field.replace('&', '&amp;')
+        if 0 < len(field) <= 40:
+            return ordinate, line.format(ordinate, 'st2 ' + bold, field)
+        elif len(field) > 40:
+            index = field[:41].rfind(' ')
+            if index == -1:
+                return ordinate, line.format(ordinate, 'st4 ' + bold, field)
+            else:
+                first_part = line.format(ordinate, 'st2 ' + bold, field[:index])
+                ordinate += step
+                ordinate, second_part = text_adapt(field[index+1:], ordinate, bold)
+                return ordinate, first_part + second_part
+        else:
+            return ordinate, field
+
+    for e in signet:
+        if type(e) == list:
+            if 's_title' in e:
+                y, text = text_adapt(' '.join([doctor[k] for k in e]), y, 'st22')
+                result += text
+            else:
+                y, text = text_adapt(' '.join([doctor[k] for k in e]), y)
+                result += text
+        else:
+            y, text = text_adapt(doctor[e], y)
+            result += text
+        y += step
+    return result
+
+
 def lang_prescription(doctor, file, num, lang):
     """
     Create a pdf prescription notebooks for the corresponding doctor by language
-    :param doctor: Dictionary containing the doctor's data
-    :param file: Template corresponding to the language
-    :param num: Number of notebooks needed
-    :param lang: Language of the notebooks created
+    :param doctor: Dictionary
+    :param file: Str (filename)
+    :param num: Int
+    :param lang: Str
     :return: -
     """
     doctor['image_bar_code'] = render(str(doctor['h_bar_code'])[:-1])
+    doctor['signet'] = signet_maker(doctor)
 
     with open(file, mode='r') as f:
         template = Template(f.read())
@@ -177,8 +230,8 @@ def lang_prescription(doctor, file, num, lang):
 def prescription_maker(doctor, num_by_lang):
     """
     Create a pdf prescription notebooks for the corresponding doctor
-    :param doctor: Dictionary containing the doctor's data
-    :param num_by_lang: Number of notebooks needed by language
+    :param doctor: Dictionary
+    :param num_by_lang: Int
     :return: -
     """
     doc = dict(list(doctor['g'].items()) + list(doctor['h'].items()) + list(doctor['s'].items()))
@@ -194,8 +247,8 @@ def prescription_maker(doctor, num_by_lang):
 def pdf_maker(doctors_hm, mails_hm):
     """
     Launch the creations of the needed pdf files (mail labels and prescription notebooks)
-    :param doctors_hm: Dictionary containing doctors'data under the form of dictionaries by doctor
-    :param mails_hm: Dictionary containing the commands number as a list by doctor
+    :param doctors_hm: Dictionary
+    :param mails_hm: Dictionary
     :return: -
     """
     for inami in mails_hm.keys():

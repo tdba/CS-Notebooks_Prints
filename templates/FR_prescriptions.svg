@@ -26,6 +26,7 @@
 	.st20{font-family:'MinionPro-Regular';}
 	.st21{font-size:8.9492px;}
 	.st22{font-weight:bold;}
+	.st23{font-size:5px;}
 </style>
 
 <line class="st0" x1="5.8" y1="110.7" x2="290.6" y2="110.7"/>
@@ -53,15 +54,7 @@
 <text transform="matrix(1 0 0 1 149.5264 539.2689)" class="st1 st2">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</text>
 <text transform="matrix(1 0 0 1 65.2637 558.6849)" class="st1 st7">PRESCRIPTION DE MEDICAMENTS</text>
 <text transform="matrix(1 0 0 1 148.833 157.9105)" class="st15 st2 st22">$h_last_name $h_first_name</text>
-<text transform="matrix(1 0 0 1 10.3467 473.2532)" class="st16 st2 st22">$s_title $s_last_name $s_first_name</text>
-<text transform="matrix(1 0 0 1 10.3467 481.6536)" class="st16 st2">$s_inami_number</text>
-<text transform="matrix(1 0 0 1 10.3467 490.053)" class="st16 st2">$s_speciality</text>
-<text transform="matrix(1 0 0 1 10.3467 498.4534)" class="st16 st2">$s_institute</text>
-<text transform="matrix(1 0 0 1 10.3467 506.8528)" class="st16 st2">$s_street</text>
-<text transform="matrix(1 0 0 1 10.3467 515.2532)" class="st16 st2">$s_zip $s_city</text>
-<text transform="matrix(1 0 0 1 10.3467 523.6536)" class="st16 st2">$s_phone</text>
-<text transform="matrix(1 0 0 1 10.3467 532.053)" class="st16 st2">$s_fax</text>
-<text transform="matrix(1 0 0 1 10.3467 540.4534)" class="st16 st2">$s_email</text>
+$signet
 
 <g>
 	$image_bar_code
