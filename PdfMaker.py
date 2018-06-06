@@ -91,9 +91,9 @@ def extractor(file):
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
         if inami_key in mail_labels_hm:
-            mail_labels_hm[inami_key][row_values[0]] = (row_values[1], row_values[2], row_values[16])
+            mail_labels_hm[inami_key][row_values[16]] = (row_values[1], row_values[2], row_values[16], row_values[0])
         else:
-            mail_labels_hm[inami_key] = {row_values[0]: (row_values[1], row_values[2], row_values[16])}
+            mail_labels_hm[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16], row_values[0])}
             if row_values[1] not in notebooks:
                 mail_labels_name_hm[name] = inami_key
 
@@ -115,17 +115,16 @@ def mail_label_maker(doctor, num, command_type, labels):
     :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()) + list(doctor['h'].items()))
-    doc['g_order_number'] = num
-    doc['g_target_name'] = command_type
     if '.' in doctor['h']['h_inami_number']:
         inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
     else:
         inami_number = int(''.join([str(ord(e)) for e in doc['h_last_name'] + doc['h_first_name']]))
-    code = labels[inami_number][num][2]
-    doc['l_bar_code'] = code
+    doc['g_order_number'] = labels[inami_number][num][3]
+    doc['g_target_name'] = command_type
+    doc['l_bar_code'] = num
 
-    if len(code) == 24:
-        generate('code128', code, output='barcode')
+    if len(num) == 24:
+        generate('code128', num, output='barcode')
         with open("barcode.svg", mode='r') as f:
             svg_barcode = ''.join(f.readlines()[5:])
             top = '<svg x="121px" y="81px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'

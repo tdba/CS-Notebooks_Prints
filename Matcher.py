@@ -52,8 +52,8 @@ def print_label(pos_labels, labels, number):
     :return: -
     """
     if len(pos_labels) > 0:
-        file = pos_labels[0][3]
-        order_number = pos_labels[0][4]
+        file = pos_labels[0][4]
+        order_number = pos_labels[0][3]
         while True:
             # TODO print
             # popen2.popen4("lpr -P [printer] " + file)
@@ -68,7 +68,7 @@ def print_label(pos_labels, labels, number):
             if print_input == 'y':
                 f.write(order_number + '\n')
                 os.remove(file)
-                del labels[number][order_number]
+                del labels[number][pos_labels[0][2]]
                 save(labels)
                 break
 
@@ -95,7 +95,7 @@ def look_up_name(i_labels, i_match):
             print("The entered name does not match any registered doctor memo order")
         else:
             number = i_match[name]
-            pos_labels = [e + (k,) for k, e in i_labels[number].items() if e[0] not in notebooks]
+            pos_labels = [e for k, e in i_labels[number].items() if e[0] not in notebooks]
             print_label(pos_labels, i_labels, number)
             break
 
@@ -120,9 +120,9 @@ def look_up_inami(labels, memo):
                 print("The entered inami number does not match any registered doctor")
             else:
                 if memo:
-                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] not in notebooks]
+                    pos_labels = [e for k, e in labels[number].items() if e[0] not in notebooks]
                 else:
-                    pos_labels = [e + (k,) for k, e in labels[number].items() if e[0] in notebooks]
+                    pos_labels = [e for k, e in labels[number].items() if e[0] in notebooks]
                 print_label(pos_labels, labels, number)
                 break
 
