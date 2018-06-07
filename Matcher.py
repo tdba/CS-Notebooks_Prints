@@ -66,7 +66,7 @@ def print_label(pos_labels, labels, number):
             print("Did it print well? (y/n)")
             print_input = input().lower()
             if print_input == 'y':
-                f.write(order_number + '\n')
+                f.write(str(order_number) + '\n')
                 os.remove(file)
                 del labels[number][pos_labels[0][2]]
                 save(labels)
