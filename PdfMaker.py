@@ -169,6 +169,7 @@ def signet_maker(doctor):
         :param bold: Str
         :return: Str
         """
+        field = str(field)
         if '&' in field:
             field = field.replace('&', '&amp;')
         if 0 < len(field) <= 40:
@@ -188,10 +189,10 @@ def signet_maker(doctor):
     for e in signet:
         if type(e) == list:
             if 's_title' in e:
-                y, text = text_adapt(' '.join([doctor[k] for k in e]), y, 'st22')
+                y, text = text_adapt(' '.join([str(doctor[k]) for k in e]), y, 'st22')
                 result += text
             else:
-                y, text = text_adapt(' '.join([doctor[k] for k in e]), y)
+                y, text = text_adapt(' '.join([str(doctor[k]) for k in e]), y)
                 result += text
         else:
             y, text = text_adapt(doctor[e], y)

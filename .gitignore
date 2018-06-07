@@ -8,3 +8,4 @@ mail_labels/notebooks/*.pdf
 *_hm
 *.txt
 *.xlsx
+*.xls
