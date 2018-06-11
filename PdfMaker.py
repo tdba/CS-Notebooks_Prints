@@ -59,9 +59,16 @@ def extractor(file):
     :param file: Str (filename)
     :return: Dictionary (doctors)
     """
-    doctors_hm = {}
-    mail_labels_hm = {}
-    mail_labels_name_hm = {}
+    try:
+        with open('docs_hm', 'rb') as f_docs, open('mail_i_hm', 'rb') as f_labels, \
+                open('inami_match_hm', 'rb') as f_match:
+            doctors_hm = pickle.load(f_docs)
+            mail_labels_hm = pickle.load(f_labels)
+            mail_labels_name_hm = pickle.load(f_match)
+    except FileNotFoundError:
+        doctors_hm = {}
+        mail_labels_hm = {}
+        mail_labels_name_hm = {}
 
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
