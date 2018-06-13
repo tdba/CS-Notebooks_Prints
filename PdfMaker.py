@@ -251,20 +251,24 @@ def prescription_maker(doctor, num_by_lang):
         lang_prescription(doc, "templates/FR_prescriptions.svg", num_by_lang[1], 'FR')
 
 
-def pdf_maker(doctors_hm, mails_hm):
+def pdf_maker(doctors_hm, mails_hm, prod_type):
     """
     Launch the creations of the needed pdf files (mail labels and prescription notebooks)
     :param doctors_hm: Dictionary
     :param mails_hm: Dictionary
+    :param prod_type: String ('n' or 'l' or concatenation of both)
     :return: -
     """
     for inami in mails_hm.keys():
-        quantity = (sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] == 'N']),
-                    sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] != 'N']))
         doctor = doctors_hm[inami]
-        for k, e in mails_hm[inami].items():
-            mail_label_maker(doctor, k, e[0], mails_hm)
-        prescription_maker(doctor, quantity)
+        if 'l' in prod_type:
+            for k, e in mails_hm[inami].items():
+                mail_label_maker(doctor, k, e[0], mails_hm)
+        if 'n' in prod_type:
+            q = (sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] == 'N']),
+                 sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] != 'N']))
+
+            prescription_maker(doctor, q)
 
 
 if __name__ == '__main__':
@@ -279,7 +283,7 @@ if __name__ == '__main__':
     doctors, mail_labels = extractor(sys.argv[1])
     print("Extraction achieved")
     print("---Pdf creation---")
-    pdf_maker(doctors, mail_labels)
+    pdf_maker(doctors, mail_labels, sys.argv[2])
     with open("mail_i_hm", mode='wb+') as hm:
         pickle.dump(mail_labels, hm)
     print("Creations achieved")
