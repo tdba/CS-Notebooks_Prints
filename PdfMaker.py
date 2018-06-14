@@ -60,16 +60,13 @@ def extractor(file):
     :return: Dictionary (doctors)
     """
     try:
-        with open('docs_hm', 'rb') as f_docs, open('mail_i_hm', 'rb') as f_labels, \
-                open('inami_match_hm', 'rb') as f_match:
+        with open('docs_hm', 'rb') as f_docs, open('inami_match_hm', 'rb') as f_match:
             doctors_hm = pickle.load(f_docs)
-            mail_labels_hm = pickle.load(f_labels)
             mail_labels_name_hm = pickle.load(f_match)
     except FileNotFoundError:
         doctors_hm = {}
-        mail_labels_hm = {}
         mail_labels_name_hm = {}
-    mail_labels_hm_run = {}
+    mail_labels_hm = {}
 
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
@@ -104,19 +101,12 @@ def extractor(file):
             mail_labels_hm[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16], row_values[0])}
             if row_values[1] not in notebooks:
                 mail_labels_name_hm[name] = inami_key
-        if inami_key in mail_labels_hm_run:
-            mail_labels_hm_run[inami_key][row_values[16]] = (row_values[1], row_values[2], row_values[16],
-                                                             row_values[0])
-        else:
-            mail_labels_hm_run[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16],
-                                                              row_values[0])}
 
-    with open("docs_hm", 'wb+') as f_doc, open("mail_i_hm", 'wb+') as f_mail, open("inami_match_hm", 'wb+') as i_match:
+    with open("docs_hm", 'wb+') as f_doc, open("inami_match_hm", 'wb+') as i_match:
         pickle.dump(doctors_hm, f_doc)
-        pickle.dump(mail_labels_hm, f_mail)
         pickle.dump(mail_labels_name_hm, i_match)
 
-    return doctors_hm, mail_labels_hm_run
+    return doctors_hm, mail_labels_hm
 
 
 def mail_label_maker(doctor, num, command_type, labels):
@@ -289,6 +279,14 @@ if __name__ == '__main__':
     print("Initiating the extractor")
     doctors, mail_labels = extractor(sys.argv[1])
     print("Extraction achieved")
+
     print("---Pdf creation---")
     pdf_maker(doctors, mail_labels, sys.argv[2])
+    try:
+        with open("mail_i_hm", 'rb') as f_mail:
+            mail_labels_permanent = pickle.load(f_mail)
+    except FileNotFoundError:
+        mail_labels_permanent = {}
+    with open("mail_i_hm", 'wb+') as f_mail:
+        pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
     print("Creations achieved")
