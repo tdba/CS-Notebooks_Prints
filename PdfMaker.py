@@ -69,6 +69,7 @@ def extractor(file):
         doctors_hm = {}
         mail_labels_hm = {}
         mail_labels_name_hm = {}
+    mail_labels_hm_run = {}
 
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
@@ -103,13 +104,19 @@ def extractor(file):
             mail_labels_hm[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16], row_values[0])}
             if row_values[1] not in notebooks:
                 mail_labels_name_hm[name] = inami_key
+        if inami_key in mail_labels_hm_run:
+            mail_labels_hm_run[inami_key][row_values[16]] = (row_values[1], row_values[2], row_values[16],
+                                                             row_values[0])
+        else:
+            mail_labels_hm_run[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16],
+                                                              row_values[0])}
 
     with open("docs_hm", 'wb+') as f_doc, open("mail_i_hm", 'wb+') as f_mail, open("inami_match_hm", 'wb+') as i_match:
         pickle.dump(doctors_hm, f_doc)
         pickle.dump(mail_labels_hm, f_mail)
         pickle.dump(mail_labels_name_hm, i_match)
 
-    return doctors_hm, mail_labels_hm
+    return doctors_hm, mail_labels_hm_run
 
 
 def mail_label_maker(doctor, num, command_type, labels):
@@ -284,6 +291,4 @@ if __name__ == '__main__':
     print("Extraction achieved")
     print("---Pdf creation---")
     pdf_maker(doctors, mail_labels, sys.argv[2])
-    with open("mail_i_hm", mode='wb+') as hm:
-        pickle.dump(mail_labels, hm)
     print("Creations achieved")
