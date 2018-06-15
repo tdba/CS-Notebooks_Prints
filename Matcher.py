@@ -19,9 +19,6 @@ Structure used:
 """
 
 
-notebooks = {"algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"}
-
-
 def loader():
     """
     Load the pickle file containing the dictionaries useful to the match
@@ -39,8 +36,8 @@ def save(labels_ht):
     :param labels_ht: Dictionary (updated one)
     :return: -
     """
-    with open("mail_i_hm", mode='wb+') as f:
-        pickle.dump(labels_ht, f)
+    with open("mail_i_hm", mode='wb+') as f_mail:
+        pickle.dump(labels_ht, f_mail)
 
 
 def print_label(pos_labels, labels, number):
@@ -76,11 +73,12 @@ def print_label(pos_labels, labels, number):
         print("There is no more file to print for this inami number with this kind of document")
 
 
-def look_up_name(i_labels, i_match):
+def look_up_name(i_labels, i_match, cmd_type):
     """
     Perform a look in the memo bloc labels to print one with a matching name
     :param i_labels: Dictionary
     :param i_match: Dictionary
+    :param cmd_type: String
     :return: -
     """
     while True:
@@ -95,16 +93,16 @@ def look_up_name(i_labels, i_match):
             print("The entered name does not match any registered doctor memo order")
         else:
             number = i_match[name]
-            pos_labels = [e for k, e in i_labels[number].items() if e[0] not in notebooks]
+            pos_labels = [e for k, e in i_labels[number].items() if e[0].lower() == cmd_type]
             print_label(pos_labels, i_labels, number)
             break
 
 
-def look_up_inami(labels, memo):
+def look_up_inami(labels, cmd_type):
     """
     Perform a look in the labels to print one with a matching inami number for a bloc memo or a notebook
     :param labels: Dictionary
-    :param memo: Boolean
+    :param cmd_type: String
     :return: -
     """
     while True:
@@ -119,10 +117,7 @@ def look_up_inami(labels, memo):
             if number not in labels.keys():
                 print("The entered inami number does not match any registered doctor")
             else:
-                if memo:
-                    pos_labels = [e for k, e in labels[number].items() if e[0] not in notebooks]
-                else:
-                    pos_labels = [e for k, e in labels[number].items() if e[0] in notebooks]
+                pos_labels = [e for k, e in labels[number].items() if e[0].lower() == cmd_type]
                 print_label(pos_labels, labels, number)
                 break
 
@@ -143,6 +138,9 @@ def match(i_labels, i_match):
         print("Please enter the requested document (n (notebook) or m (memo)) or q to quit the program:")
         cmd_input = input().lower()
 
+        print("Please enter the requested type (algemene, csp100, blocssmb, ...")
+        cmd_type = input().lower()
+
         if cmd_input == 'q':
             break
 
@@ -154,10 +152,10 @@ def match(i_labels, i_match):
                 if type_input == 'q':
                     break
                 elif type_input == 'n':
-                    look_up_name(i_labels, i_match)
+                    look_up_name(i_labels, i_match, cmd_type)
                     break
                 elif type_input == 'i':
-                    look_up_inami(i_labels, True)
+                    look_up_inami(i_labels, cmd_type)
                     break
                 else:
                     print("The input didn't match any of the expected options, let's start again")
