@@ -282,11 +282,12 @@ if __name__ == '__main__':
 
     print("---Pdf creation---")
     pdf_maker(doctors, mail_labels, sys.argv[2])
-    try:
-        with open("mail_i_hm", 'rb') as f_mail:
-            mail_labels_permanent = pickle.load(f_mail)
-    except FileNotFoundError:
-        mail_labels_permanent = {}
-    with open("mail_i_hm", 'wb+') as f_mail:
-        pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
+    if 'l' in sys.argv[2]:
+        try:
+            with open("mail_i_hm", 'rb') as f_mail:
+                mail_labels_permanent = pickle.load(f_mail)
+        except FileNotFoundError:
+            mail_labels_permanent = {}
+        with open("mail_i_hm", 'wb+') as f_mail:
+            pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
     print("Creations achieved")

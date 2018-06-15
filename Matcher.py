@@ -161,7 +161,7 @@ def match(i_labels, i_match):
                     print("The input didn't match any of the expected options, let's start again")
 
         elif cmd_input == 'n':
-            look_up_inami(i_labels, False)
+            look_up_inami(i_labels, cmd_type)
 
         else:
             print("Please enter an input respecting the expected format (m, n or q) \n")
