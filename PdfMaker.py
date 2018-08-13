@@ -59,13 +59,13 @@ def extractor(file):
     :param file: Str (filename)
     :return: Dictionary (doctors)
     """
-    try:
-        with open('docs_hm', 'rb') as f_docs, open('inami_match_hm', 'rb') as f_match:
-            doctors_hm = pickle.load(f_docs)
-            mail_labels_name_hm = pickle.load(f_match)
-    except FileNotFoundError:
-        doctors_hm = {}
-        mail_labels_name_hm = {}
+    #try:
+    #    with open('docs_hm', 'rb') as f_docs, open('inami_match_hm', 'rb') as f_match:
+    #        doctors_hm = pickle.load(f_docs)
+    #        mail_labels_name_hm = pickle.load(f_match)
+    #except FileNotFoundError:
+    doctors_hm = {}
+    mail_labels_name_hm = {}
     mail_labels_hm = {}
 
     workbook = xlrd.open_workbook(file)
@@ -283,11 +283,12 @@ if __name__ == '__main__':
     print("---Pdf creation---")
     pdf_maker(doctors, mail_labels, sys.argv[2])
     if 'l' in sys.argv[2]:
-        try:
-            with open("mail_i_hm", 'rb') as f_mail:
-                mail_labels_permanent = pickle.load(f_mail)
-        except FileNotFoundError:
-            mail_labels_permanent = {}
+        #try:
+        #    with open("mail_i_hm", 'rb') as f_mail:
+        #        mail_labels_permanent = pickle.load(f_mail)
+        #except FileNotFoundError:
+        #    mail_labels_permanent = {}
         with open("mail_i_hm", 'wb+') as f_mail:
-            pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
+        #    pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
+            pickle.dump(mail_labels, f_mail)
     print("Creations achieved")
