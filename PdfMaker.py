@@ -126,6 +126,9 @@ def mail_label_maker(doctor, num, command_type, labels):
     doc['g_order_number'] = labels[inami_number][num][3]
     doc['g_target_name'] = command_type
     doc['l_bar_code'] = num
+    for k in doc:
+        if '&' in doc[k]:
+            doc[k] = doc[k].replace('&', '&amp;')
 
     if len(num) == 24:
         generate('code128', num, output='barcode')
