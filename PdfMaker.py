@@ -71,8 +71,20 @@ def extractor(file):
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
 
+    def format_svg(values):
+        """
+        Transform the values to make them fit to svg standards
+        :param values: List
+        :return: -
+        """
+        for idx in range(len(values)):
+            val = values[idx]
+            if type(val) == str and '&' in val:
+                values[idx] = val.replace('&', '&amp;')
+
     for row in range(1, worksheet.nrows):
         row_values = [int(val) if type(val) == float else val for val in worksheet.row_values(row)]
+        format_svg(row_values)
 
         g_values = {}
         for i in g_relevant_c:
@@ -126,9 +138,6 @@ def mail_label_maker(doctor, num, command_type, labels):
     doc['g_order_number'] = labels[inami_number][num][3]
     doc['g_target_name'] = command_type
     doc['l_bar_code'] = num
-    for k in doc:
-        if '&' in doc[k]:
-            doc[k] = doc[k].replace('&', '&amp;')
 
     if len(num) == 24:
         generate('code128', num, output='barcode')
@@ -176,9 +185,6 @@ def signet_maker(doctor):
         :param bold: Str
         :return: Str
         """
-        field = str(field)
-        if '&' in field:
-            field = field.replace('&', '&amp;')
         if 0 < len(field) <= 40:
             return ordinate, line.format(ordinate, 'st2 ' + bold, field)
         elif len(field) > 40:
@@ -202,7 +208,7 @@ def signet_maker(doctor):
                 y, text = text_adapt(' '.join([str(doctor[k]) for k in e]), y)
                 result += text
         else:
-            y, text = text_adapt(doctor[e], y)
+            y, text = text_adapt(str(doctor[e]), y)
             result += text
         y += step
     return result
