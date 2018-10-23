@@ -107,6 +107,9 @@ def extractor(file):
 
         if inami_key not in doctors_hm:
             doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
+        else:
+            tmp_doctor = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
+            doctors_hm[inami_key] = {**doctors_hm[inami_key], **tmp_doctor}
         if inami_key in mail_labels_hm:
             mail_labels_hm[inami_key][row_values[16]] = (row_values[1], row_values[2], row_values[16], row_values[0])
         else:
