@@ -29,38 +29,40 @@
 	.st23{font-size:5px;}
 </style>
 
-<line class="st0" x1="5.8" y1="110.7" x2="290.6" y2="110.7"/>
-<line class="st0" x1="5.8" y1="173.1" x2="290.6" y2="173.1"/>
-<line class="st0" x1="6.6" y1="216.1" x2="291.3" y2="216.1"/>
-<line class="st0" x1="6.6" y1="451.4" x2="291.3" y2="451.4"/>
-<line class="st0" x1="6.6" y1="543.5" x2="291.3" y2="543.5"/>
-<line class="st0" x1="147.2" y1="110.6" x2="147.2" y2="173.2"/>
-<line class="st0" x1="147.2" y1="451.4" x2="147.2" y2="543.5"/>
-<line class="st0" x1="89.1" y1="216" x2="89.1" y2="451.2"/>
-<line class="st0" x1="147.3" y1="499.5" x2="291.3" y2="499.5"/>
+<line class="st0" x1="5.8" y1="91.7" x2="290.6" y2="91.7"/>
+<line class="st0" x1="5.8" y1="152.1" x2="290.6" y2="152.1"/>
+<line class="st0" x1="6.6" y1="195.1" x2="291.3" y2="195.1"/>
+<line class="st0" x1="6.6" y1="432.4" x2="291.3" y2="432.4"/>
+<line class="st0" x1="6.6" y1="524.5" x2="291.3" y2="524.5"/>
+<line class="st0" x1="147.2" y1="91.6" x2="147.2" y2="154.2"/>
+<line class="st0" x1="147.2" y1="432.4" x2="147.2" y2="524.5"/>
+<line class="st0" x1="89.1" y1="195" x2="89.1" y2="432.2"/>
+<line class="st0" x1="147.3" y1="480.5" x2="291.3" y2="480.5"/>
 
-<text transform="matrix(1 0 0 1 148.7197 125.1956)"><tspan x="0" y="0" class="st1 st2">Nom et prénom du prescripteur</tspan></text>
-<text transform="matrix(1 0 0 1 5.8481 186.6907)" class="st1 st2">A REMPLIR PAR LE PRESCRIPTEUR:</text>
-<text transform="matrix(1 0 0 1 5.8481 197.6878)"><tspan x="0" y="0" class="st1 st2">Nom et prénom </tspan></text>
-<text transform="matrix(1 0 0 1 5.8481 208.6849)"><tspan x="0" y="0" class="st1 st2">du bénéficiaire:</tspan></text>
-<text transform="matrix(1 0 0 1 62.7964 208.6849)"><tspan x="0" y="0" class="st1 st2 st3">......................................................................</tspan></text>
-<text transform="matrix(1 0 0 1 5.8481 227.7083)"><tspan x="0" y="0" class="st1 st4">Réservé à la vignette</tspan></text>
-<text transform="matrix(1 0 0 1 5.8481 234.9085)" class="st1 st4">du conditionnement</text>
-<text transform="matrix(1 0 0 1 100.1001 229.4964)" class="st5 st6">R/</text>
-<text transform="matrix(1 0 0 1 30.0327 463.2269)" class="st1 st2">Cachet du prescripteur</text>
-<text transform="matrix(1 0 0 1 159.5596 463.2269)" class="st1 st2">Date et signature du prescripteur </text>
-<text transform="matrix(1 0 0 1 152.8301 510.471)"><tspan x="0" y="0" class="st1 st2">Délivrable à partir de la date précisée</tspan></text>
-<text transform="matrix(1 0 0 1 195.7656 518.8714)" class="st1 st2">ou à partir du:</text>
-<text transform="matrix(1 0 0 1 149.5264 539.2689)" class="st1 st2">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</text>
-<text transform="matrix(1 0 0 1 65.2637 558.6849)" class="st1 st7">PRESCRIPTION DE MEDICAMENTS</text>
-<text transform="matrix(1 0 0 1 148.833 157.9105)" class="st15 st2 st22">$h_last_name $h_first_name</text>
+<text transform="matrix(1 0 0 1 148.7197 106.1956)"><tspan x="0" y="0" class="st1 st2">Nom et prénom du prescripteur</tspan></text>
+<text transform="matrix(1 0 0 1 5.8481 167.6907)" class="st1 st2">A REMPLIR PAR LE PRESCRIPTEUR:</text>
+<text transform="matrix(1 0 0 1 5.8481 178.6878)"><tspan x="0" y="0" class="st1 st2">Nom et prénom </tspan></text>
+<text transform="matrix(1 0 0 1 5.8481 189.6849)"><tspan x="0" y="0" class="st1 st2">du bénéficiaire:</tspan></text>
+<text transform="matrix(1 0 0 1 62.7964 189.6849)"><tspan x="0" y="0" class="st1 st2 st3">......................................................................</tspan></text>
+<text transform="matrix(1 0 0 1 5.8481 208.7083)"><tspan x="0" y="0" class="st1 st4">Réservé à la vignette</tspan></text>
+<text transform="matrix(1 0 0 1 5.8481 215.9085)" class="st1 st4">du conditionnement</text>
+<text transform="matrix(1 0 0 1 100.1001 210.4964)" class="st5 st6">R/</text>
+<text transform="matrix(1 0 0 1 30.0327 444.2269)" class="st1 st2">Cachet du prescripteur</text>
+<text transform="matrix(1 0 0 1 159.5596 444.2269)" class="st1 st2">Date et signature du prescripteur </text>
+<text transform="matrix(1 0 0 1 159.5596 491.471)"><tspan x="0" y="0" class="st1 st2">Date de fin pour l'exécution:</tspan></text>
+<!--<text transform="matrix(1 0 0 1 152.8301 510.471)"><tspan x="0" y="0" class="st1 st2">Délivrable à partir de la date précisée</tspan></text>-->
+<!--<text transform="matrix(1 0 0 1 195.7656 518.8714)" class="st1 st2">ou à partir du:</text>-->
+<!--<text transform="matrix(1 0 0 1 149.5264 539.2689)" class="st1 st2">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</text>-->
+<text transform="matrix(1 0 0 1 65.2637 539.6849)" class="st1 st7">PRESCRIPTION DE MEDICAMENTS</text>
+<text transform="matrix(1 0 0 1 36.2637 553.6849)" class="st1 st7">D'APPLICATION A PARTIR DU 1er novembre 2019</text>
+<text transform="matrix(1 0 0 1 148.833 138.9105)" class="st15 st2 st22">$h_last_name $h_first_name</text>
 $signet
 
 <g>
 	$image_bar_code
 
 	<g class="st19">
-		<text transform="matrix(1 0 0 1 41.8784 164.7176)" class="st20 st21">$h_inami_number</text>
+		<text transform="matrix(1 0 0 1 41.8784 145.7176)" class="st20 st21">$h_inami_number</text>
 	</g>
 </g>
 	
