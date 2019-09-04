@@ -177,7 +177,7 @@ def signet_maker(doctor):
     """
     line = '<text transform ="matrix(1 0 0 1 10.3467 {})" class ="st16 {}"> {} </text>\n'
     step = 8.4004
-    y = 473.2532
+    y = 454.2532
     result = ''
 
     def text_adapt(field, ordinate, bold=''):

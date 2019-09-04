@@ -10,7 +10,7 @@ def render(digits):
     :return: SVG string Representing a barcode
     """
     top = '<svg height="250" width="{0}" style="background:white">'
-    bar = '<rect x="{0}" y="120.6" width="{1}" height="32.2" style="fill:black"/>'
+    bar = '<rect x="{0}" y="101.6" width="{1}" height="32.2" style="fill:black"/>'
     barcode = [top.format(len(digits) * 18 + 24)]
 
     def checksum():
