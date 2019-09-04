@@ -50,8 +50,9 @@
 <text transform="matrix(1 0 0 1 30.0327 444.2269)" class="st1 st2">Stempel van de voorschrijver</text>
 <text transform="matrix(1 0 0 1 162.5596 444.2269)" class="st1 st2">Datum en handtekening van de </text>
 <text transform="matrix(1 0 0 1 196.3652 452.6273)" class="st1 st2">voorschrijver</text>
-<text transform="matrix(1 0 0 1 152.8301 491.471)"><tspan x="0" y="0" class="st1 st2">Uitvoerbaar vanaf voornoemde datum</tspan></text>
-<text transform="matrix(1 0 0 1 209.7656 499.8714)" class="st1 st2">of vanaf:</text>
+<text transform="matrix(1 0 0 1 159.5596 491.471)"><tspan x="0" y="0" class="st1 st2">Einddatum van de uitvoerbaarheid:</tspan></text>
+<!--<text transform="matrix(1 0 0 1 152.8301 491.471)"><tspan x="0" y="0" class="st1 st2">Uitvoerbaar vanaf voornoemde datum</tspan></text>-->
+<!--<text transform="matrix(1 0 0 1 209.7656 499.8714)" class="st1 st2">of vanaf:</text>-->
 <!--<text transform="matrix(1 0 0 1 149.5264 539.2689)" class="st1 st2">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</text>-->
 <text transform="matrix(1 0 0 1 65.2637 539.6849)" class="st1 st7">GENEESMIDDELENVOORSCHRIFT</text>
 <text transform="matrix(1 0 0 1 46.2637 553.6849)" class="st1 st7">VAN TOEPASSING VANAF 1 november 2019</text>
