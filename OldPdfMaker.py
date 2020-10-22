@@ -30,12 +30,10 @@ h_relevant_c = [5, 6, 7, 8]
 l_relevant_c = [9, 10, 11, 12, 13, 14, 15, 16]
 s_relevant_c = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 
-relevants = {'g': g_relevant_c, 'h': h_relevant_c, 'l': l_relevant_c, 's': s_relevant_c}
-
 doctors_c = [5, 6, 7, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 mail_c = [0, 1, 9, 10, 11, 12, 13, 14, 15]
 
-notebooks = ["algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"]
+notebooks = {"algemene", "ALGEMENE", "Algemene", "CSP100", "CSP50"}
 signet = [['s_title', 's_first_name', 's_last_name'], 's_speciality', 's_institute',
           's_street', ['s_zip', 's_city'], 's_phone', 's_inami_number', 's_fax', 's_email']
 
@@ -55,13 +53,20 @@ def relevant_columns_names(num):
     }[num]
 
 
-def pdf_maker(file, option):
+def extractor(file):
     """
     Extract data from provided file to store it in dictionary with doctors as key
     :param file: Str (filename)
-    :param option: str
-    :return: -
+    :return: Dictionary (doctors)
     """
+    #try:
+    #    with open('docs_hm', 'rb') as f_docs, open('inami_match_hm', 'rb') as f_match:
+    #        doctors_hm = pickle.load(f_docs)
+    #        mail_labels_name_hm = pickle.load(f_match)
+    #except FileNotFoundError:
+    doctors_hm = {}
+    mail_labels_name_hm = {}
+    mail_labels_hm = {}
 
     workbook = xlrd.open_workbook(file)
     worksheet = workbook.sheet_by_index(0)
@@ -81,33 +86,64 @@ def pdf_maker(file, option):
         row_values = [int(val) if type(val) == float else val for val in worksheet.row_values(row)]
         format_svg(row_values)
 
-        doc = {'l': {}, 'g': {}, 'h': {}, 's': {}}
-        for letter, col_list in relevants.items():
-            for i in col_list:
-                doc[letter][relevant_columns_names(i)] = row_values[i]
+        g_values = {}
+        for i in g_relevant_c:
+            g_values[relevant_columns_names(i)] = row_values[i]
+        h_values = {}
+        for i in h_relevant_c:
+            h_values[relevant_columns_names(i)] = row_values[i]
+        l_values = {}
+        for i in l_relevant_c:
+            l_values[relevant_columns_names(i)] = row_values[i]
+        s_values = {}
+        for i in s_relevant_c:
+            s_values[relevant_columns_names(i)] = row_values[i]
 
-        if 'l' in option:
-            mail_label_maker(doc, row_values[16], row_values[1], str(row_values[0]))
-        if 'n' in option and row_values[1] in notebooks:
-            prescription_maker(doc, row_values[2], row_values[0])
+        try:
+            inami_key = int(h_values['h_inami_number'].replace('.', ''))
+        except ValueError:
+            inami_key = int(''.join([str(ord(e)) for e in h_values['h_last_name'] + h_values['h_first_name']]))
+        name = h_values['h_last_name'].lower() + ' ' + h_values['h_first_name'].lower()
+
+        if inami_key not in doctors_hm:
+            doctors_hm[inami_key] = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
+        else:
+            tmp_doctor = {'g': g_values, 'h': h_values, 'l': l_values, 's': s_values}
+            doctors_hm[inami_key] = {**doctors_hm[inami_key], **tmp_doctor}
+        if inami_key in mail_labels_hm:
+            mail_labels_hm[inami_key][row_values[16]] = (row_values[1], row_values[2], row_values[16], row_values[0])
+        else:
+            mail_labels_hm[inami_key] = {row_values[16]: (row_values[1], row_values[2], row_values[16], row_values[0])}
+            if row_values[1] not in notebooks:
+                mail_labels_name_hm[name] = inami_key
+
+    with open("docs_hm", 'wb+') as f_doc, open("inami_match_hm", 'wb+') as i_match:
+        pickle.dump(doctors_hm, f_doc)
+        pickle.dump(mail_labels_name_hm, i_match)
+
+    return doctors_hm, mail_labels_hm
 
 
-def mail_label_maker(doctor, barcode_num, command_type, order_num):
+def mail_label_maker(doctor, num, command_type, labels):
     """
     Create a pdf mail label for the corresponding command number
     :param doctor: Dictionary
-    :param barcode_num: Int
+    :param num: Int
     :param command_type: Str
-    :param order_num: Str
+    :param labels: Dictionary
     :return: -
     """
     doc = dict(list(doctor['l'].items()) + list(doctor['g'].items()) + list(doctor['h'].items()))
-    doc['g_order_number'] = order_num
+    if '.' in doctor['h']['h_inami_number']:
+        inami_number = int(doctor['h']['h_inami_number'].replace('.', ''))
+    else:
+        inami_number = int(''.join([str(ord(e)) for e in doc['h_last_name'] + doc['h_first_name']]))
+    doc['g_order_number'] = labels[inami_number][num][3]
     doc['g_target_name'] = command_type
-    doc['l_bar_code'] = barcode_num
+    doc['l_bar_code'] = num
 
-    if len(barcode_num) == 24:
-        generate('code128', barcode_num, output='barcode')
+    if len(num) == 24:
+        generate('code128', num, output='barcode')
         with open("barcode.svg", mode='r') as f:
             svg_barcode = ''.join(f.readlines()[5:])
             top = '<svg x="121px" y="81px" height="10.000mm" width="40.000mm" xmlns="http://www.w3.org/2000/svg">'
@@ -117,18 +153,20 @@ def mail_label_maker(doctor, barcode_num, command_type, order_num):
         with open("templates/mail_labels.svg", mode='r') as f:
             template = Template(f.read())
             filled_template = template.substitute(doc)
-        with open("tmp_label.svg", mode='w+') as f:
+        with open(str(num) + ".svg", mode='w+') as f:
             f.write(filled_template)
 
         if command_type in notebooks:
             path = 'mail_labels/notebooks/'
         else:
             path = 'mail_labels/memos/'
-        cairosvg.svg2pdf(url="tmp_label.svg", write_to=path + order_num + '.pdf')
-        os.remove("tmp_label.svg")
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to=path + str(num) + '.pdf')
+        labels[inami_number][num] += (path + str(num) + '.pdf',)
+
+        os.remove(str(num) + '.svg')
     else:
         print("An error occurred, we can't provide this mail label because the given code doesn't fit the requirements"
-              "\nDenied barcode:" + barcode_num + '\n With order number' + order_num + '\n\n')
+              "\nDenied order number:" + num + '\n With code' + code + '\n\n')
 
 
 def signet_maker(doctor):
@@ -179,13 +217,13 @@ def signet_maker(doctor):
     return result
 
 
-def lang_prescription(doctor, file, lang, order_num):
+def lang_prescription(doctor, file, num, lang):
     """
     Create a pdf prescription notebooks for the corresponding doctor by language
     :param doctor: Dictionary
     :param file: Str (filename)
+    :param num: Int
     :param lang: Str
-    :param order_num: str
     :return: -
     """
     doctor['image_bar_code'] = render(str(doctor['h_bar_code'])[:-1])
@@ -194,27 +232,52 @@ def lang_prescription(doctor, file, lang, order_num):
     with open(file, mode='r') as f:
         template = Template(f.read())
         filled_template = template.substitute(doctor)
-    with open("tmp_nb.svg", mode='w+') as f:
+    with open(str(num) + ".svg", mode='w+') as f:
         f.write(filled_template)
 
-    cairosvg.svg2pdf(url='tmp_nb.svg', write_to="notebooks/" + str(lang) + '.' + str(order_num) + '.pdf', dpi=72)
+    inami_number = int(doctor['h_inami_number'].replace('.', ''))
+    for i in range(num):
+        cairosvg.svg2pdf(url=str(num) + '.svg', write_to="notebooks/" + str(lang) + '.' + str(inami_number) + '.'
+                                                         + str(i) + '.pdf', dpi=72)
 
-    os.remove('tmp_nb.svg')
+    os.remove(str(num) + '.svg')
 
 
-def prescription_maker(doctor, lang, order_num):
+def prescription_maker(doctor, num_by_lang):
     """
     Create a pdf prescription notebooks for the corresponding doctor
     :param doctor: Dictionary
-    :param lang: str
-    :param order_num: str
+    :param num_by_lang: Int
     :return: -
     """
     doc = dict(list(doctor['g'].items()) + list(doctor['h'].items()) + list(doctor['s'].items()))
     doc['h_last_name'] = doc['h_last_name'].upper()
     doc['h_first_name'] = doc['h_first_name'].upper()
 
-    lang_prescription(doc, f"templates/{lang}_prescriptions.svg", lang, order_num)
+    if num_by_lang[0] > 0:
+        lang_prescription(doc, "templates/NL_prescriptions.svg", num_by_lang[0], 'NL')
+    if num_by_lang[1] > 0:
+        lang_prescription(doc, "templates/FR_prescriptions.svg", num_by_lang[1], 'FR')
+
+
+def pdf_maker(doctors_hm, mails_hm, prod_type):
+    """
+    Launch the creations of the needed pdf files (mail labels and prescription notebooks)
+    :param doctors_hm: Dictionary
+    :param mails_hm: Dictionary
+    :param prod_type: String ('n' or 'l' or concatenation of both)
+    :return: -
+    """
+    for inami in mails_hm.keys():
+        doctor = doctors_hm[inami]
+        if 'l' in prod_type:
+            for k, e in mails_hm[inami].items():
+                mail_label_maker(doctor, k, e[0], mails_hm)
+        if 'n' in prod_type:
+            q = (sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] == 'N']),
+                 sum([1 for command in mails_hm[inami].values() if command[0] in notebooks and command[1] != 'N']))
+
+            prescription_maker(doctor, q)
 
 
 if __name__ == '__main__':
@@ -226,6 +289,18 @@ if __name__ == '__main__':
         os.makedirs('notebooks/')
 
     print("Initiating the extractor")
-    print("---Pdf creation---")
-    pdf_maker(sys.argv[1], sys.argv[2])
+    doctors, mail_labels = extractor(sys.argv[1])
     print("Extraction achieved")
+
+    print("---Pdf creation---")
+    pdf_maker(doctors, mail_labels, sys.argv[2])
+    if 'l' in sys.argv[2]:
+        #try:
+        #    with open("mail_i_hm", 'rb') as f_mail:
+        #        mail_labels_permanent = pickle.load(f_mail)
+        #except FileNotFoundError:
+        #    mail_labels_permanent = {}
+        with open("mail_i_hm", 'wb+') as f_mail:
+        #    pickle.dump({**mail_labels_permanent, **mail_labels}, f_mail)
+            pickle.dump(mail_labels, f_mail)
+    print("Creations achieved")
