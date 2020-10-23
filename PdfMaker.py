@@ -124,7 +124,15 @@ def mail_label_maker(doctor, barcode_num, command_type, order_num):
             path = 'mail_labels/notebooks/'
         else:
             path = 'mail_labels/memos/'
-        cairosvg.svg2pdf(url="tmp_label.svg", write_to=path + order_num + '.pdf')
+
+        file_path = path + order_num
+        tmp = file_path
+        i = 0
+        while os.path.exists(tmp + '.pdf'):
+            tmp = file_path + '_' + str(i)
+            i += 1
+
+        cairosvg.svg2pdf(url="tmp_label.svg", write_to=tmp + '.pdf')
         os.remove("tmp_label.svg")
     else:
         print("An error occurred, we can't provide this mail label because the given code doesn't fit the requirements"
@@ -197,7 +205,14 @@ def lang_prescription(doctor, file, lang, order_num):
     with open("tmp_nb.svg", mode='w+') as f:
         f.write(filled_template)
 
-    cairosvg.svg2pdf(url='tmp_nb.svg', write_to="notebooks/" + str(lang) + '.' + str(order_num) + '.pdf', dpi=72)
+    file_path = "notebooks/" + str(lang) + '.' + str(order_num)
+    tmp = file_path
+    i = 0
+    while os.path.exists(tmp + '.pdf'):
+        tmp = file_path + '_' + str(i)
+        i += 1
+
+    cairosvg.svg2pdf(url='tmp_nb.svg', write_to=tmp + '.pdf', dpi=72)
 
     os.remove('tmp_nb.svg')
 
